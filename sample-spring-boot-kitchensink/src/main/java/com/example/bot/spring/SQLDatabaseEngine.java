@@ -12,8 +12,25 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 	@Override
 	String search(String text) throws Exception {
 		//Write your code here
-		return null;
-	}
+            String result = null;
+            
+                Connection connection = getConnection();
+                PreparedStatement stmt = connection.prepareStatement ("SELECT * FROM respond where input like concat('%', ?, '%')");
+                stmt.setString(1, text.toLowerCase());
+                ResultSet rs = stmt.executeQuery();
+                while (result == null && rs.next()) {
+                    if (rs.getString(1).equals(text)) {
+                        result = rs.getString(2);
+                    }
+                }
+                if (result == null) {
+                    throw new Exception("NOT FOUND");
+                }
+                rs.close();
+                stmt.close();
+                    
+	    return result;	
+       }
 	
 	
 	private Connection getConnection() throws URISyntaxException, SQLException {
