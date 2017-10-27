@@ -259,17 +259,17 @@ public class KitchenSinkController {
 
             default:
             	String reply = null;
-            	try {
-            		reply = database.search(text);
-            	} catch (Exception e) {
-            		reply = text;
-            	}
-                log.info("Returns echo message {}: {}", replyToken, reply);
-                this.replyText(
-                        replyToken,
-                        itscLOGIN + " says " + reply
-                );
-                break;
+			try {
+				reply = database.search(text);
+			} catch (Exception e) {
+				reply = text;
+			}
+			log.info("Returns echo message {}: {}", replyToken, reply);
+			this.replyText(
+					replyToken,
+					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
+			);
+			break;
         }
     }
 
@@ -322,6 +322,12 @@ public class KitchenSinkController {
 
 	private DatabaseEngine database;
 	private String itscLOGIN;
+	private final String GREETINGMESSAGE = "Hello" + itscLOGIN + " , welcome to dieting chatbot version1.0";
+	private final String COMMANDMESSAGE = "Please choose the feature you want";
+	private final String COMMAND1 = "(1)Enter Today's statistic";
+	private final String COMMAND2 = "(2)Enter/Change the food preference";
+	private final String COMMAND3 = "(3)Check the recommandation of today's menu";
+	private final String COMMAND4 = "(4)Set remind time";
 	
 
 	//The annontation @Value is from the package lombok.Value
