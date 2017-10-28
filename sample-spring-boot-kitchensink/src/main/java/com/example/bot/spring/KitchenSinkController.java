@@ -273,9 +273,7 @@ public class KitchenSinkController {
 				break;
 			}
             default:
-            	String reply = null;
-			log.info("Returns echo message {}: {}", replyToken, reply);
-			if (preinput.equals("1")) {
+				if (preinput.equals("1")) {
 				this.replyText(replyToken, "caonima");
 				preinput = text;
 				this.replyToken = replyToken;

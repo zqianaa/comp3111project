@@ -10,7 +10,6 @@ public class ReminderEngine {
     Timer timer;
     public ReminderEngine() {
         Date time = getTime();
-        System.out.println("指定时间time=" + time);
         timer = new Timer();
         timer.schedule(new ReminderEngineHelper(),time);
     }
