@@ -257,26 +257,36 @@ public class KitchenSinkController {
                 break;
             }
 			case  "1": {
-				this.replyText(replyToken, "Fuck1");
+				this.replyText(replyToken, "Please enter");
 				break;
 			}
 			case  "2": {
-				this.replyText(replyToken, "Fuck2");
+				this.replyText(replyToken, "Please enter");
 				break;
 			}
 			case  "3": {
-				this.replyText(replyToken, "Fuck3");
+				this.replyText(replyToken, "Please enter");
 				break;
 			}
             default:
             	String reply = null;
 			log.info("Returns echo message {}: {}", replyToken, reply);
+			if (preinput.equals("1")) {
+				this.replyText(replyToken, "caonima");
+			}
+			if (preinput.equals("2")) {
+					this.replyText(replyToken, "caonima2");
+			}
+			if (preinput.equals("3")) {
+					this.replyText(replyToken, "caonima3");
+			}
 			this.replyText(
 					replyToken,
 					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 			);
 				break;
         }
+        preinput = text;
     }
 
 	static String createUri(String path) {
@@ -334,6 +344,7 @@ public class KitchenSinkController {
 	private final String COMMAND2 = "(2)Enter/Change the food preference(Please type '2' for further operation)";
 	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
+	private String preinput;
 	
 
 	//The annontation @Value is from the package lombok.Valuei
