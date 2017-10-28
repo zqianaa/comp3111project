@@ -274,20 +274,29 @@ public class KitchenSinkController {
 			if (preinput.equals("1")) {
 				this.replyText(replyToken, "caonima");
 				preinput = text;
+				this.replyToken = replyToken;
 			} else
 			if (preinput.equals("2")) {
 					this.replyText(replyToken, "caonima2");
 				preinput = text;
+				this.replyToken = replyToken;
 			} else
 			if (preinput.equals("3")) {
-					this.replyText(replyToken, "caonima3");
+				this.replyText(replyToken, "caonima3");
 				preinput = text;
+				this.replyToken = replyToken;
+			}
+			if (preinput.equals("4")) {
+					new ReminderEngine();
+					preinput = text;
+					this.replyToken = replyToken;
 			} else {
 				this.replyText(
 						replyToken,
 						GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 				);
 				preinput = text;
+				this.replyToken = replyToken;
 			}
 				break;
         }
@@ -332,9 +341,9 @@ public class KitchenSinkController {
 		return new DownloadedContent(tempFile, createUri("/downloaded/" + tempFile.getFileName()));
 	}
 
-
-	
-
+	public void reminder (String content) {
+		this.replyText(replyToken, content);
+	}
 
 	public KitchenSinkController() {
 		database = new SQLDatabaseEngine();
@@ -350,6 +359,7 @@ public class KitchenSinkController {
 	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
 	private String preinput;
+	private String replyToken;
 	
 
 	//The annontation @Value is from the package lombok.Valuei
