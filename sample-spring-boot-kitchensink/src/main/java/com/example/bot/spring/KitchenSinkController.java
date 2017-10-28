@@ -273,6 +273,14 @@ public class KitchenSinkController {
 				break;
 			}
             default:
+            	if (preinput.equals("1") && preinput.equals("1") && preinput.equals("1") && preinput.equals("1")){
+					this.replyText(
+							replyToken,
+							GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
+					);
+					preinput = text;
+					this.replyToken = replyToken;
+				}
 				if (preinput.equals("1")) {
 				this.replyText(replyToken, "caonima");
 				preinput = text;
@@ -291,16 +299,10 @@ public class KitchenSinkController {
 			if (preinput.equals("4")) {
 				new ReminderEngine();
 				this.replyText(replyToken, "caonima4");
-				this.replyText(replyToken, "TEST");
 				preinput = text;
 					this.replyToken = replyToken;
 			} else {
-				this.replyText(
-						replyToken,
-						GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
-				);
-				preinput = text;
-				this.replyToken = replyToken;
+				
 			}
 				break;
         }
