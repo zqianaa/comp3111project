@@ -265,14 +265,17 @@ public class KitchenSinkController {
 					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 			);
 			switch(content.getText()) {
-				case "1": {
+				case  "1": {
 					System.out.println("fuck1");
+					break;
 				}
-				case "2": {
-					System.out.println("fuck1");
+				case  "2": {
+					System.out.println("fuck2");
+					break;
 				}
-				case "3": {
-					System.out.println("fuck1");
+				case  "3": {
+					System.out.println("fuck3");
+					break;
 				}
 			}
 			break;
