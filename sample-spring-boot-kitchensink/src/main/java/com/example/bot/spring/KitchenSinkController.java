@@ -363,8 +363,8 @@ public class KitchenSinkController {
 	private final String COMMAND2 = "(2)Enter/Change the food preference(Please type '2' for further operation)";
 	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
-	private String preinput;
-	private String replyToken;
+	private String preinput = null;
+	private String replyToken = null;
 	
 
 	//The annontation @Value is from the package lombok.Valuei
