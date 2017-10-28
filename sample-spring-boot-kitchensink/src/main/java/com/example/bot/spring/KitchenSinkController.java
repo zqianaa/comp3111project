@@ -256,7 +256,18 @@ public class KitchenSinkController {
                 this.reply(replyToken, templateMessage);
                 break;
             }
-
+			case  "1": {
+				this.replyText(replyToken, "Fuck1");
+				break;
+			}
+			case  "2": {
+				this.replyText(replyToken, "Fuck2");
+				break;
+			}
+			case  "3": {
+				this.replyText(replyToken, "Fuck3");
+				break;
+			}
             default:
             	String reply = null;
 			log.info("Returns echo message {}: {}", replyToken, reply);
@@ -264,21 +275,7 @@ public class KitchenSinkController {
 					replyToken,
 					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 			);
-			switch(text) {
-				case  "1": {
-					this.replyText(replyToken, "Fuck1");
-					break;
-				}
-				case  "2": {
-					this.replyText(replyToken, "Fuck2");
-					break;
-				}
-				case  "3": {
-					this.replyText(replyToken, "Fuck3");
-					break;
-				}
-			}
-			break;
+				break;
         }
     }
 
