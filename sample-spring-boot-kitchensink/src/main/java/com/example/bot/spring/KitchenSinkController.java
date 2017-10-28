@@ -273,17 +273,22 @@ public class KitchenSinkController {
 			log.info("Returns echo message {}: {}", replyToken, reply);
 			if (preinput.equals("1")) {
 				this.replyText(replyToken, "caonima");
-			}
+				preinput = text;
+			} else
 			if (preinput.equals("2")) {
 					this.replyText(replyToken, "caonima2");
-			}
+				preinput = text;
+			} else
 			if (preinput.equals("3")) {
 					this.replyText(replyToken, "caonima3");
+				preinput = text;
+			} else {
+				this.replyText(
+						replyToken,
+						GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
+				);
+				preinput = text;
 			}
-			this.replyText(
-					replyToken,
-					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
-			);
 				break;
         }
         preinput = text;
