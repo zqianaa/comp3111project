@@ -264,7 +264,7 @@ public class KitchenSinkController {
 					replyToken,
 					GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 			);
-			switch(content.getText()) {
+			switch(text) {
 				case  "1": {
 					System.out.println("fuck1");
 					break;
