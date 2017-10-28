@@ -291,6 +291,7 @@ public class KitchenSinkController {
 			if (preinput.equals("4")) {
 				new ReminderEngine();
 				this.replyText(replyToken, "caonima4");
+				this.replyText(replyToken, "TEST");
 				preinput = text;
 					this.replyToken = replyToken;
 			} else {
