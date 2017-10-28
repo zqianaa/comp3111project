@@ -280,6 +280,7 @@ public class KitchenSinkController {
 			}
 			case "4": {
 				this.replyText(replyToken, "Please enter");
+				reminder("haha");
 				break;
 			}
             default:
