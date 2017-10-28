@@ -283,7 +283,7 @@ public class KitchenSinkController {
 				break;
 			}
             default:
-            	if (preinput.equals("1") && preinput.equals("1") && preinput.equals("1") && preinput.equals("1")){
+            	if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")){
 					this.replyText(
 							replyToken,
 							GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
