@@ -266,15 +266,15 @@ public class KitchenSinkController {
 			);
 			switch(text) {
 				case  "1": {
-					System.out.println("fuck1");
+					this.replyText(replyToken, "Fuck1");
 					break;
 				}
 				case  "2": {
-					System.out.println("fuck2");
+					this.replyText(replyToken, "Fuck2");
 					break;
 				}
 				case  "3": {
-					System.out.println("fuck3");
+					this.replyText(replyToken, "Fuck3");
 					break;
 				}
 			}
