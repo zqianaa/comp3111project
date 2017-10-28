@@ -87,6 +87,16 @@ import java.net.URI;
 @Slf4j
 @LineMessageHandler
 public class KitchenSinkController {
+	private DatabaseEngine database;
+	private String itscLOGIN;
+	private final String GREETINGMESSAGE = "Hello" + itscLOGIN + " , welcome to dieting chatbot version1.0";
+	private final String COMMANDMESSAGE = "Please choose the feature you want(Please type '1' for further operation)";
+	private final String COMMAND1 = "(1)Enter Today's statistic(Please type '1' for further operation)";
+	private final String COMMAND2 = "(2)Enter/Change the food preference(Please type '2' for further operation)";
+	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
+	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
+	private String preinput = "";
+	private String replyToken = "";
 	
 
 
@@ -302,7 +312,7 @@ public class KitchenSinkController {
 				preinput = text;
 					this.replyToken = replyToken;
 			} else {
-				
+
 			}
 				break;
         }
@@ -356,16 +366,7 @@ public class KitchenSinkController {
 		itscLOGIN = System.getenv("ITSC_LOGIN");
 	}
 
-	private DatabaseEngine database;
-	private String itscLOGIN;
-	private final String GREETINGMESSAGE = "Hello" + itscLOGIN + " , welcome to dieting chatbot version1.0";
-	private final String COMMANDMESSAGE = "Please choose the feature you want(Please type '1' for further operation)";
-	private final String COMMAND1 = "(1)Enter Today's statistic(Please type '1' for further operation)";
-	private final String COMMAND2 = "(2)Enter/Change the food preference(Please type '2' for further operation)";
-	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
-	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
-	private String preinput = null;
-	private String replyToken = null;
+
 	
 
 	//The annontation @Value is from the package lombok.Valuei
