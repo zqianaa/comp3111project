@@ -268,6 +268,10 @@ public class KitchenSinkController {
 				this.replyText(replyToken, "Please enter");
 				break;
 			}
+			case "4": {
+				this.replyText(replyToken, "Please enter");
+				break;
+			}
             default:
             	String reply = null;
 			log.info("Returns echo message {}: {}", replyToken, reply);
@@ -287,7 +291,7 @@ public class KitchenSinkController {
 				this.replyToken = replyToken;
 			}
 			if (preinput.equals("4")) {
-					new ReminderEngine();
+				new ReminderEngine();
 				this.replyText(replyToken, "caonima4");
 				preinput = text;
 					this.replyToken = replyToken;

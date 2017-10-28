@@ -17,7 +17,7 @@ public class ReminderEngine {
     public Date getTime() {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, 17);
-        c.set(Calendar.MINUTE,00);
+        c.set(Calendar.MINUTE,20);
         c.set(Calendar.SECOND,00);
         Date time = c.getTime();
         return time;
