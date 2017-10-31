@@ -30,6 +30,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
+
+import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +98,7 @@ public class KitchenSinkController {
 	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
 	private String preinput = "";
-	private String replyToken = "";
+	private String USERID = "";
 	
 
 
@@ -220,8 +222,7 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
         String text = content.getText();
-
-        log.info("Got text message from {}: {}", replyToken, text);
+		log.info("Got text message from {}: {}", replyToken, text);
         switch (text) {
             case "profile": {
                 String userId = event.getSource().getUserId();
@@ -279,6 +280,7 @@ public class KitchenSinkController {
 				break;
 			}
 			case "4": {
+				USERID = event.getSource().getUserId();
 				reminder("haha");
 				this.replyText(replyToken, "Please enter");
 				break;
@@ -359,7 +361,8 @@ public class KitchenSinkController {
 	}
 
 	public void reminder (String content) {
-		this.replyText(replyToken, content);
+		PushMessage pushmessage = new PushMessage(USERID, new TextMessage(content));
+		lineMessagingClient.pushMessage(pushmessage);
 	}
 
 	public KitchenSinkController() {
