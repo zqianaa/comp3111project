@@ -5,7 +5,7 @@ package com.example.bot.spring;
  */
 import com.linecorp.bot.client.LineMessagingClient;
 import com.linecorp.bot.model.PushMessage;
-
+import java.util.TimerTask;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Timer;
@@ -20,8 +20,14 @@ public class ReminderEngine {
         seconds = s;
         Date time = getTime();
         kc.reminder(time.toString());
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                kc.reminder("test");
+            }
+        };
         timer = new Timer();
-        timer.schedule(new ReminderEngineHelper(kc, UserID),time);
+        timer.schedule(task,time);
     }
     public Date getTime() {
         Calendar c = Calendar.getInstance();
