@@ -331,7 +331,7 @@ public class KitchenSinkController {
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
-					re1 = new ReminderEngine(hour, minutes, seconds,this);
+					re1 = new ReminderEngine(hour, minutes, seconds,this,USERID);
 					replyText(replyToken, "Then for lunch");
 					break;
 				}
@@ -353,7 +353,7 @@ public class KitchenSinkController {
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
-					re3 = new ReminderEngine(hour, minutes, seconds, this);
+					re3 = new ReminderEngine(hour, minutes, seconds, this,USERID);
 					replyText(replyToken, "Thanks for using this feature");
 					break;
 				}
