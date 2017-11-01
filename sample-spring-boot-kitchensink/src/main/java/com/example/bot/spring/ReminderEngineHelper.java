@@ -11,7 +11,6 @@ public class ReminderEngineHelper extends TimerTask{
     }
     @Override
     public void run() {
-        String remind = "Please enter today's menu";
-        kc.reminder(remind);
+        kc.reminder("caonima");
     }
 }
