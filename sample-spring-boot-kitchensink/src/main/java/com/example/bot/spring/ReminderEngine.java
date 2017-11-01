@@ -14,11 +14,12 @@ public class ReminderEngine {
     private int hour;
     private int minutes;
     private int seconds;
+    private final int period = 24*3600*1000;
     public ReminderEngine(int h, int m, int s, KitchenSinkController kc, String UserID) {
         hour = h;
         minutes = m;
         seconds = s;
-        Date time = getTime();
+        int time = getTime();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -27,19 +28,33 @@ public class ReminderEngine {
         };
         timer = new Timer();
         try {
-            timer.schedule(task, 10*1000, 60*1000);
+            timer.schedule(task, time, period);
         } catch (Exception e) {
             kc.reminder("error");
         }
-        kc.reminder(time.toString());
     }
-    public Date getTime() {
+    public int getTime() {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day =c.get(Calendar.DAY_OF_MONTH);
-        c.set(year, month, day, hour, minutes, seconds);
-        Date time = c.getTime();
+        int curhour = c.get(Calendar.HOUR_OF_DAY);
+        int curminute = c.get(Calendar.MINUTE);
+        int sumhour = 0;
+        int summinutes = 0;
+        if (curhour > hour) {
+            sumhour = (23 - curhour) + hour;
+            summinutes = (60 - curminute) + minutes;
+        } else {
+            if (curminute > minutes) {
+                sumhour = hour - curhour - 1;
+                summinutes = 60 - (curminute - minutes);
+            } else {
+                sumhour = hour - curhour;
+                summinutes = minutes - curminute;
+            }
+        }
+        int time = sumhour*3600*1000 + summinutes*60*1000;
         return time;
     }
 }
