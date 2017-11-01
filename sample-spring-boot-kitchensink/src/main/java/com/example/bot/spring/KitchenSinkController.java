@@ -282,7 +282,7 @@ public class KitchenSinkController {
 			case "4": {
 				USERID = event.getSource().getUserId();
 				reminder("haha");
-				this.replyText(replyToken, "Please enter");
+				this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS'");
 				break;
 			}
             default:
@@ -311,7 +311,6 @@ public class KitchenSinkController {
 			}
 			if (preinput.equals("4")) {
 				new ReminderEngine();
-				this.replyText(replyToken, "caonima4");
 				preinput = text;
 					this.replyToken = replyToken;
 			} else {
