@@ -328,6 +328,7 @@ public class KitchenSinkController {
 					int seconds = Integer.parseInt(time[2]);
 					new ReminderEngine(hour, minutes, seconds);
 					replyText(replyToken, "Then for lunch");
+					break;
 				}
 				case 2: {
 					mark1++;
@@ -337,6 +338,7 @@ public class KitchenSinkController {
 					int seconds = Integer.parseInt(time[2]);
 					new ReminderEngine(hour, minutes, seconds);
 					replyText(replyToken, "Then for lunch");
+					break;
 				}
 				case 3: {
 					mark1 = 0;
@@ -346,6 +348,7 @@ public class KitchenSinkController {
 					int seconds = Integer.parseInt(time[2]);
 					new ReminderEngine(hour, minutes, seconds);
 					replyText(replyToken, "Thanks for using this feature");
+					break;
 				}
 			}
 		}
