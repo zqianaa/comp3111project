@@ -26,7 +26,11 @@ public class ReminderEngine {
             }
         };
         timer = new Timer();
-        timer.schedule(task, 20);
+        try {
+            timer.schedule(task, time);
+        } catch (Exception e) {
+            kc.reminder("error");
+        }
         kc.reminder(time.toString());
     }
     public Date getTime() {
