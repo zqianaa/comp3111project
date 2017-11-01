@@ -14,14 +14,14 @@ public class ReminderEngine {
     private int hour;
     private int minutes;
     private int seconds;
-    public ReminderEngine(int h, int m, int s, KitchenSinkController kc) {
+    public ReminderEngine(int h, int m, int s, KitchenSinkController kc, String UserID) {
         hour = h;
         minutes = m;
         seconds = s;
         Date time = getTime();
         kc.reminder(time.toString());
         timer = new Timer();
-        timer.schedule(new ReminderEngineHelper(kc),time);
+        timer.schedule(new ReminderEngineHelper(kc, UserID),time);
     }
     public Date getTime() {
         Calendar c = Calendar.getInstance();

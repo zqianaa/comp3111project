@@ -343,7 +343,7 @@ public class KitchenSinkController {
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
 					replyText(replyToken, "Then for lunch");
-					re2 = new ReminderEngine(hour, minutes, seconds,this);
+					re2 = new ReminderEngine(hour, minutes, seconds,this, USERID);
 					break;
 				}
 				case 3: {
