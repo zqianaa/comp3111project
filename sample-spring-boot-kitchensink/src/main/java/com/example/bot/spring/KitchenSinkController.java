@@ -321,7 +321,7 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark4) {
 				case 1: {
-					mark1++;
+					mark4++;
 					String [] time = text.split(":");
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
@@ -331,7 +331,7 @@ public class KitchenSinkController {
 					break;
 				}
 				case 2: {
-					mark1++;
+					mark4++;
 					String [] time = text.split(":");
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
@@ -341,7 +341,7 @@ public class KitchenSinkController {
 					break;
 				}
 				case 3: {
-					mark1 = 0;
+					mark4 = 0;
 					String [] time = text.split(":");
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
