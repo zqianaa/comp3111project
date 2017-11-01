@@ -15,10 +15,12 @@ public class ReminderEngine {
     private int minutes;
     private int seconds;
     private final int period = 24*3600*1000;
+    private KitchenSinkController kc = new KitchenSinkController();
     public ReminderEngine(int h, int m, int s, KitchenSinkController kc, String UserID) {
         hour = h;
         minutes = m;
         seconds = s;
+        this.kc = kc;
         int time = getTime();
         kc.reminder(String.valueOf(time));
         TimerTask task = new TimerTask() {
@@ -43,6 +45,10 @@ public class ReminderEngine {
         int curminute = c.get(Calendar.MINUTE);
         int sumhour = 0;
         int summinutes = 0;
+        kc.reminder("curhour " + String.valueOf(curhour));
+        kc.reminder("curminute " +String.valueOf(curminute));
+        kc.reminder("hourset " + String.valueOf(hour));
+        kc.reminder("minuteset " + String.valueOf(minutes));
         if (curhour == hour) {
             sumhour = 0;
         } else
