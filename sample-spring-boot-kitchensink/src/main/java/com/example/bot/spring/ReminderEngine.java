@@ -19,7 +19,6 @@ public class ReminderEngine {
         minutes = m;
         seconds = s;
         Date time = getTime();
-        kc.reminder(time.toString());
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -28,6 +27,7 @@ public class ReminderEngine {
         };
         timer = new Timer();
         timer.schedule(task,time);
+        kc.reminder(time.toString());
     }
     public Date getTime() {
         Calendar c = Calendar.getInstance();
