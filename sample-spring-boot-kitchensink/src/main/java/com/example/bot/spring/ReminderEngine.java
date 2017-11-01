@@ -26,14 +26,15 @@ public class ReminderEngine {
             }
         };
         timer = new Timer();
-        timer.schedule(task,0,5*1000);
+        timer.schedule(@NonNull task, @NonNull time);
         kc.reminder(time.toString());
     }
     public Date getTime() {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, hour);
-        c.set(Calendar.MINUTE,minutes);
-        c.set(Calendar.SECOND,seconds);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day =c.get(Calendar.DAY_OF_MONTH);
+        c.set(year, month, day, hour, minutes, seconds);
         Date time = c.getTime();
         return time;
     }
