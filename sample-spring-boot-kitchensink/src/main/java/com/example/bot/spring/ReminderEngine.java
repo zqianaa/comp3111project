@@ -48,7 +48,17 @@ public class ReminderEngine {
         int sumhour = 0;
         int summinutes = 0;
         if (curhour == hour) {
-            sumhour = 0;
+            if (curminute < minutes) {
+                sumhour = 0;
+                summinutes = minutes - curminute;
+            }
+            if (curminute == minutes) {
+                summinutes = 0;
+            }
+            if (curminute > minutes) {
+                sumhour = 23;
+                summinutes = 60 - (curminute - minutes);
+            }
         } else
         if (curhour > hour) {
             sumhour = (23 - curhour) + hour;
@@ -58,7 +68,18 @@ public class ReminderEngine {
                 sumhour = hour - curhour - 1;
                 summinutes = 60 - (curminute - minutes);
             } else if (curminute == minutes) {
-                summinutes = 0;
+                if (curhour > hour) {
+                    sumhour = 24 - curhour + hour;
+                    summinutes = 0;
+                }
+                if (curhour == hour) {
+                    sumhour = 0;
+                    summinutes = 0;
+                }
+                if (curhour < hour) {
+                    sumhour = hour - curhour;
+                    summinutes = 0;
+                }
             } else {
                 sumhour = hour - curhour;
                 summinutes = minutes - curminute;
