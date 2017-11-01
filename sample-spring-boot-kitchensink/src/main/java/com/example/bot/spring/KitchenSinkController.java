@@ -106,6 +106,7 @@ public class KitchenSinkController {
 	public ReminderEngine re1;
 	public ReminderEngine re2;
 	public ReminderEngine re3;
+	private boolean marker;
 
 	
 
@@ -284,6 +285,7 @@ public class KitchenSinkController {
 				// modified the reply message according to the feature you are implementing.
 				case "2": {
 					this.replyText(replyToken, "Please enter");
+					mark2++;
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
@@ -317,7 +319,10 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
-
+				case 1: {
+					re1.setmarker(false);
+					mark2 = 0;
+				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
@@ -342,7 +347,7 @@ public class KitchenSinkController {
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
-					replyText(replyToken, "Then for lunch");
+					replyText(replyToken, "Then for dinner");
 					re2 = new ReminderEngine(hour, minutes, seconds,this, USERID);
 					break;
 				}
@@ -408,6 +413,7 @@ public class KitchenSinkController {
 		database = new SQLDatabaseEngine();
 		itscLOGIN = System.getenv("ITSC_LOGIN");
 	}
+
 
 
 	

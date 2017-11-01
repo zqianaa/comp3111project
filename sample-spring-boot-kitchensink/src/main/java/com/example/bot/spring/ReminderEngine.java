@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.Timer;
 public class ReminderEngine {
+    private boolean marker = true;
     private Timer timer;
     private int hour;
     private int minutes;
@@ -22,11 +23,12 @@ public class ReminderEngine {
         seconds = s;
         this.kc = kc;
         int time = getTime();
-        kc.reminder(String.valueOf(time));
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                kc.reminder("test");
+                if (marker) {
+                    kc.reminder("Don't forget to enter your menu!");
+                }
             }
         };
         timer = new Timer();
@@ -45,10 +47,6 @@ public class ReminderEngine {
         int curminute = c.get(Calendar.MINUTE);
         int sumhour = 0;
         int summinutes = 0;
-        kc.reminder("curhour " + String.valueOf(curhour));
-        kc.reminder("curminute " +String.valueOf(curminute));
-        kc.reminder("hourset " + String.valueOf(hour));
-        kc.reminder("minuteset " + String.valueOf(minutes));
         if (curhour == hour) {
             sumhour = 0;
         } else
@@ -69,4 +67,8 @@ public class ReminderEngine {
         int time = sumhour*3600*1000 + summinutes*60*1000;
         return time;
     }
+    public void setmarker (boolean mark) {
+        marker = mark;
+    }
+
 }
