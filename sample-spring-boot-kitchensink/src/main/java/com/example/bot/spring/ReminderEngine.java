@@ -3,21 +3,22 @@ package com.example.bot.spring;
 /**
  * Created by qwmqza on 2017/10/28.
  */
+import com.linecorp.bot.client.LineMessagingClient;
+import com.linecorp.bot.model.PushMessage;
+
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Timer;
 public class ReminderEngine {
-    Timer timer;
-    int hour;
-    int minutes;
-    int seconds;
+    private Timer timer;
+    private int hour;
+    private int minutes;
+    private int seconds;
     public ReminderEngine(int h, int m, int s) {
         hour = h;
         minutes = m;
         seconds = s;
         Date time = getTime();
-        KitchenSinkController kc = new KitchenSinkController();
-        kc.reminder("currenttime");
         timer = new Timer();
         timer.schedule(new ReminderEngineHelper(),time);
     }
