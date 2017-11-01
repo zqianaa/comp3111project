@@ -321,7 +321,9 @@ public class KitchenSinkController {
 			switch(mark2) {
 				case 1: {
 					mark2 = 0;
-					re1.setmarker(false);
+					if (re1 != null) {
+						re1.setmarker(false);
+					}
 				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
