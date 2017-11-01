@@ -19,7 +19,7 @@ public class ReminderEngine {
         minutes = m;
         seconds = s;
         Date time = getTime();
-        kc.reminder("test");
+        kc.reminder(time.toString());
         timer = new Timer();
         timer.schedule(new ReminderEngineHelper(kc),time);
     }
