@@ -26,7 +26,7 @@ public class ReminderEngine {
             }
         };
         timer = new Timer();
-        timer.schedule(task, time);
+        timer.schedule(task, 20);
         kc.reminder(time.toString());
     }
     public Date getTime() {
