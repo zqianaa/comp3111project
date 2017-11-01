@@ -10,6 +10,7 @@ import com.linecorp.bot.model.message.TextMessage;
 
 import java.util.TimerTask;
 public class ReminderEngineHelper extends TimerTask{
+    @Autowired
     private LineMessagingClient lineMessagingClient;
     private String UserID;
     KitchenSinkController kc;
