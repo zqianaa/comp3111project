@@ -292,7 +292,7 @@ public class KitchenSinkController {
 					USERID = event.getSource().getUserId();
 					reminder("haha");
 					this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS', first for breakfast:");
-					mark1++;
+					mark4++;
 					break;
 				}
 				default: {
@@ -307,6 +307,7 @@ public class KitchenSinkController {
 			}
 		} else {
 			// modified the 'switch' command according to the feature you are implementing.
+			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
 
 			}
@@ -318,7 +319,6 @@ public class KitchenSinkController {
 			switch(mark3) {
 
 			}
-			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark4) {
 				case 1: {
 					mark4++;
