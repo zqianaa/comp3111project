@@ -323,6 +323,7 @@ public class KitchenSinkController {
 				case 1: {
 					mark4++;
 					String [] time = text.split(":");
+					reminder(time[0]+time[1]+time[2]);
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
@@ -333,6 +334,7 @@ public class KitchenSinkController {
 				case 2: {
 					mark4++;
 					String [] time = text.split(":");
+					reminder(time[0]+time[1]+time[2]);
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
@@ -343,6 +345,7 @@ public class KitchenSinkController {
 				case 3: {
 					mark4 = 0;
 					String [] time = text.split(":");
+					reminder(time[0]+time[1]+time[2]);
 					int hour = Integer.parseInt(time[0]);
 					int minutes = Integer.parseInt(time[1]);
 					int seconds = Integer.parseInt(time[2]);
