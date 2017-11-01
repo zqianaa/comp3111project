@@ -320,8 +320,8 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
 				case 1: {
-					re1.setmarker(false);
 					mark2 = 0;
+					re1.setmarker(false);
 				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
