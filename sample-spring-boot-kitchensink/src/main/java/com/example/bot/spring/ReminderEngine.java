@@ -16,6 +16,8 @@ public class ReminderEngine {
         minutes = m;
         seconds = s;
         Date time = getTime();
+        KitchenSinkController kc = new KitchenSinkController();
+        kc.reminder("currenttime");
         timer = new Timer();
         timer.schedule(new ReminderEngineHelper(),time);
     }
