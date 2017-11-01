@@ -99,6 +99,10 @@ public class KitchenSinkController {
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
 	private String preinput = "";
 	private String USERID = "";
+	private int mark1 = 0;
+	private int mark2 = 0;
+	private int mark3 = 0;
+	private int mark4 = 0;
 	
 
 
@@ -221,100 +225,131 @@ public class KitchenSinkController {
 
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
-        String text = content.getText();
+		String text = content.getText();
 		log.info("Got text message from {}: {}", replyToken, text);
-        switch (text) {
-            case "profile": {
-                String userId = event.getSource().getUserId();
-                if (userId != null) {
-                    lineMessagingClient
-                            .getProfile(userId)
-                            .whenComplete(new ProfileGetter (this, replyToken));
-                } else {
-                    this.replyText(replyToken, "Bot can't use profile API without user ID");
-                }
-                break;
-            }
-            case "confirm": {
-                ConfirmTemplate confirmTemplate = new ConfirmTemplate(
-                        "Do it?",
-                        new MessageAction("Yes", "Yes!"),
-                        new MessageAction("No", "No!")
-                );
-                TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
-            case "carousel": {
-                String imageUrl = createUri("/static/buttons/1040.jpg");
-                CarouselTemplate carouselTemplate = new CarouselTemplate(
-                        Arrays.asList(
-                                new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-                                        new URIAction("Go to line.me",
-                                                      "https://line.me"),
-                                        new PostbackAction("Say hello1",
-                                                           "hello ã�“ã‚“ã�«ã�¡ã�¯")
-                                )),
-                                new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-                                        new PostbackAction("è¨€ hello2",
-                                                           "hello ã�“ã‚“ã�«ã�¡ã�¯",
-                                                           "hello ã�“ã‚“ã�«ã�¡ã�¯"),
-                                        new MessageAction("Say message",
-                                                          "Rice=ç±³")
-                                ))
-                        ));
-                TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
-                this.reply(replyToken, templateMessage);
-                break;
-            }
-			case  "1": {
-				this.replyText(replyToken, "Please enter");
-				break;
-			}
-			case  "2": {
-				this.replyText(replyToken, "Please enter");
-				break;
-			}
-			case  "3": {
-				this.replyText(replyToken, "Please enter");
-				break;
-			}
-			case "4": {
-				USERID = event.getSource().getUserId();
-				reminder("haha");
-				this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS'");
-				break;
-			}
-            default:
-            	if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")){
-					this.replyText(
-							replyToken,
-							GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
-					);
-					preinput = text;
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 ==0) {
+			switch (text) {
+				case "profile": {
+					String userId = event.getSource().getUserId();
+					if (userId != null) {
+						lineMessagingClient
+								.getProfile(userId)
+								.whenComplete(new ProfileGetter(this, replyToken));
+					} else {
+						this.replyText(replyToken, "Bot can't use profile API without user ID");
+					}
+					break;
 				}
-				if (preinput.equals("1")) {
-				this.replyText(replyToken, "caonima");
-				preinput = text;
-			} else
-			if (preinput.equals("2")) {
-					this.replyText(replyToken, "caonima2");
-				preinput = text;
-			} else
-			if (preinput.equals("3")) {
-				this.replyText(replyToken, "caonima3");
-				preinput = text;
+				case "confirm": {
+					ConfirmTemplate confirmTemplate = new ConfirmTemplate(
+							"Do it?",
+							new MessageAction("Yes", "Yes!"),
+							new MessageAction("No", "No!")
+					);
+					TemplateMessage templateMessage = new TemplateMessage("Confirm alt text", confirmTemplate);
+					this.reply(replyToken, templateMessage);
+					break;
+				}
+				case "carousel": {
+					String imageUrl = createUri("/static/buttons/1040.jpg");
+					CarouselTemplate carouselTemplate = new CarouselTemplate(
+							Arrays.asList(
+									new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
+											new URIAction("Go to line.me",
+													"https://line.me"),
+											new PostbackAction("Say hello1",
+													"hello ã�“ã‚“ã�«ã�¡ã�¯")
+									)),
+									new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
+											new PostbackAction("è¨€ hello2",
+													"hello ã�“ã‚“ã�«ã�¡ã�¯",
+													"hello ã�“ã‚“ã�«ã�¡ã�¯"),
+											new MessageAction("Say message",
+													"Rice=ç±³")
+									))
+							));
+					TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
+					this.reply(replyToken, templateMessage);
+					break;
+				}
+				// modified the reply message according to the feature you are implementing.
+				case "1": {
+					this.replyText(replyToken, "");
+					break;
+				}
+				// modified the reply message according to the feature you are implementing.
+				case "2": {
+					this.replyText(replyToken, "Please enter");
+					break;
+				}
+				// modified the reply message according to the feature you are implementing.
+				case "3": {
+					this.replyText(replyToken, "Please enter");
+					break;
+				}
+				// modified the reply message according to the feature you are implementing.
+				case "4": {
+					USERID = event.getSource().getUserId();
+					reminder("haha");
+					this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS', first for breakfast:");
+					mark1++;
+					break;
+				}
+				default: {
+					if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")) {
+						this.replyText(
+								replyToken,
+								GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
+						);
+						preinput = text;
+					}
+				}
 			}
-			if (preinput.equals("4")) {
-				new ReminderEngine(11,11,11);
-				preinput = text;
-			} else {
+		} else {
+			// modified the 'switch' command according to the feature you are implementing.
+			switch(mark1) {
 
 			}
-				break;
-        }
-        preinput = text;
-    }
+			// modified the 'switch' command according to the feature you are implementing.
+			switch(mark2) {
+
+			}
+			// modified the 'switch' command according to the feature you are implementing.
+			switch(mark3) {
+
+			}
+			// modified the 'switch' command according to the feature you are implementing.
+			switch(mark4) {
+				case 1: {
+					mark1++;
+					String [] time = text.split(":");
+					int hour = Integer.parseInt(time[0]);
+					int minutes = Integer.parseInt(time[1]);
+					int seconds = Integer.parseInt(time[2]);
+					new ReminderEngine(hour, minutes, seconds);
+					replyText(replyToken, "Then for lunch");
+				}
+				case 2: {
+					mark1++;
+					String [] time = text.split(":");
+					int hour = Integer.parseInt(time[0]);
+					int minutes = Integer.parseInt(time[1]);
+					int seconds = Integer.parseInt(time[2]);
+					new ReminderEngine(hour, minutes, seconds);
+					replyText(replyToken, "Then for lunch");
+				}
+				case 3: {
+					mark1 = 0;
+					String [] time = text.split(":");
+					int hour = Integer.parseInt(time[0]);
+					int minutes = Integer.parseInt(time[1]);
+					int seconds = Integer.parseInt(time[2]);
+					new ReminderEngine(hour, minutes, seconds);
+					replyText(replyToken, "Thanks for using this feature");
+				}
+			}
+		}
+	}
 
 	static String createUri(String path) {
 		return ServletUriComponentsBuilder.fromCurrentContextPath().path(path).build().toUriString();
