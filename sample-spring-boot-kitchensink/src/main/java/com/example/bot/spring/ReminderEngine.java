@@ -41,7 +41,7 @@ public class ReminderEngine {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day =c.get(Calendar.DAY_OF_MONTH);
-        int curhour = c.get(Calendar.HOUR_OF_DAY);
+        int curhour = c.get(Calendar.HOUR_OF_DAY) + 7;
         int curminute = c.get(Calendar.MINUTE);
         int sumhour = 0;
         int summinutes = 0;
