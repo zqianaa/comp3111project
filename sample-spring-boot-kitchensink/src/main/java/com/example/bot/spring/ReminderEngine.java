@@ -20,6 +20,7 @@ public class ReminderEngine {
         minutes = m;
         seconds = s;
         int time = getTime();
+        kc.reminder(String.valueOf(time));
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -42,6 +43,9 @@ public class ReminderEngine {
         int curminute = c.get(Calendar.MINUTE);
         int sumhour = 0;
         int summinutes = 0;
+        if (curhour == hour) {
+            sumhour = 0;
+        } else
         if (curhour > hour) {
             sumhour = (23 - curhour) + hour;
             summinutes = (60 - curminute) + minutes;
@@ -49,6 +53,8 @@ public class ReminderEngine {
             if (curminute > minutes) {
                 sumhour = hour - curhour - 1;
                 summinutes = 60 - (curminute - minutes);
+            } else if (curminute == minutes) {
+                summinutes = 0;
             } else {
                 sumhour = hour - curhour;
                 summinutes = minutes - curminute;
