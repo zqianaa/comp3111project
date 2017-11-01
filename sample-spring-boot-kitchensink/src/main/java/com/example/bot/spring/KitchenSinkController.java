@@ -292,27 +292,22 @@ public class KitchenSinkController {
 							GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
 					);
 					preinput = text;
-					this.replyToken = replyToken;
 				}
 				if (preinput.equals("1")) {
 				this.replyText(replyToken, "caonima");
 				preinput = text;
-				this.replyToken = replyToken;
 			} else
 			if (preinput.equals("2")) {
 					this.replyText(replyToken, "caonima2");
 				preinput = text;
-				this.replyToken = replyToken;
 			} else
 			if (preinput.equals("3")) {
 				this.replyText(replyToken, "caonima3");
 				preinput = text;
-				this.replyToken = replyToken;
 			}
 			if (preinput.equals("4")) {
-				new ReminderEngine();
+				new ReminderEngine(11,11,11);
 				preinput = text;
-					this.replyToken = replyToken;
 			} else {
 
 			}
