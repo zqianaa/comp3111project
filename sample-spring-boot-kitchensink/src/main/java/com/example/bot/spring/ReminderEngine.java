@@ -27,7 +27,7 @@ public class ReminderEngine {
         };
         timer = new Timer();
         try {
-            timer.schedule(task, time);
+            timer.schedule(task, 10*1000, 60*1000);
         } catch (Exception e) {
             kc.reminder("error");
         }
