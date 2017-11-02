@@ -313,7 +313,7 @@ public class KitchenSinkController {
 					}
 				}
 			}
-		} else {''
+		} else {
 			// modified the 'switch' command according to the feature you are implementing.
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
