@@ -263,14 +263,14 @@ public class KitchenSinkController {
 											new URIAction("Go to line.me",
 													"https://line.me"),
 											new PostbackAction("Say hello1",
-													"hello ã�“ã‚“ã�«ã�¡ã�¯")
+													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�")
 									)),
 									new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-											new PostbackAction("è¨€ hello2",
-													"hello ã�“ã‚“ã�«ã�¡ã�¯",
-													"hello ã�“ã‚“ã�«ã�¡ã�¯"),
+											new PostbackAction("癡穡� hello2",
+													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�",
+													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�"),
 											new MessageAction("Say message",
-													"Rice=ç±³")
+													"Rice=癟簣糧")
 									))
 							));
 					TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
@@ -279,7 +279,9 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "1": {
-					this.replyText(replyToken, "");
+					USERID = event.getSource().getUserId();
+					this.replyText(replyToken, "Please enter your weight,height,age,sex in the format 'W:H:A:F/M");
+					mark1++;
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
@@ -290,7 +292,7 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "3": {
-					this.replyText(replyToken, "Please enter");
+					this.replyText(replyToken, "Please enter ");
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
@@ -315,7 +317,16 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
-
+				case 1:{
+				String[] data =text.split(":");
+				int weight = Integer.parseInt(data[0]);
+				int height = Integer.parseInt(data[1]);
+				int age = Integer.parseInt(data[2]);
+				reminder(data[3]);
+				SQLInsert re5 =new SQLInsert(USERID,weight,height,age,data[3], this);
+				replyText(replyToken, "Thanks for using feature 1");
+				break;
+				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
@@ -328,7 +339,7 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
-
+					
 			}
 			switch(mark4) {
 				case 1: {
@@ -412,7 +423,7 @@ public class KitchenSinkController {
 	}
 
 	public KitchenSinkController() {
-		database = new SQLDatabaseEngine();
+		database = new SQLDatabaseEngine(this);
 		itscLOGIN = System.getenv("ITSC_LOGIN");
 	}
 

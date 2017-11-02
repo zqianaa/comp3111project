@@ -9,6 +9,10 @@ import java.net.URI;
 
 @Slf4j
 public class SQLDatabaseEngine extends DatabaseEngine {
+	private KitchenSinkController kc;
+	public SQLDatabaseEngine (KitchenSinkController kc) {
+		this.kc = kc;
+	}
 	@Override
 	String search(String text) throws Exception {
 		//Write your code here
@@ -33,15 +37,14 @@ public class SQLDatabaseEngine extends DatabaseEngine {
        }
 	
 	
-	private Connection getConnection() throws URISyntaxException, SQLException {
+	protected Connection getConnection() throws URISyntaxException, SQLException {
 		Connection connection;
 		URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
+		
 		String username = dbUri.getUserInfo().split(":")[0];
 		String password = dbUri.getUserInfo().split(":")[1];
 		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +  "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-
-		log.info("Username: {} Password: {}", username, password);
+        		log.info("Username: {} Password: {}", username, password);
 		log.info ("dbUrl: {}", dbUrl);
 		
 		connection = DriverManager.getConnection(dbUrl, username, password);
