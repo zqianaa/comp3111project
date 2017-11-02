@@ -19,7 +19,7 @@ public class SQLInsert {
 		
 			Statement st = conn.createStatement();
 			kc.reminder("connection");
-			if(data == "M") {
+			if(data.equals("M")) {
 				
 				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
@@ -28,7 +28,7 @@ public class SQLInsert {
 				kc.reminder("test");
 				kc.reminder(uSERID+ w+h+a+data);
 			}
-			else if (data== "F") {
+			else if (data.equals("F")) {
 				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
 						"VALUES ("+ uSERID + "," + w +","+ h +","+ a + ", 'F'," + b +");");
