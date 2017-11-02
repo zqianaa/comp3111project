@@ -16,11 +16,11 @@ public class SQLInsert {
 			Connection conn =engine.getConnection() ; 
 			Statement st = conn.createStatement();
 			if(sex == "M") {
-				st.executeUpdate("INSERT INTO Customers " + 
+				st.executeUpdate("INSERT INTO customertable " + 
 						"VALUES (name,w, , h, a,sex, 66.47+ (13.75 x w) + (5.0 x h) - (6.75 x a))");
 			}
 			else if (sex== "F") {
-				st.executeUpdate("INSERT INTO Customers " + 
+				st.executeUpdate("INSERT INTO customertable " + 
 						"VALUES (name,w, , h, a,sex, 66.47+ 665.09 + (9.56 x w) + (1.84 x h) - (4.67 x a)");
 			
 			}
