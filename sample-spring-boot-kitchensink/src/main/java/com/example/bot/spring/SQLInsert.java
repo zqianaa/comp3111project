@@ -10,18 +10,18 @@ import java.net.URI;
 @Slf4j
 public class SQLInsert { 
 
-	public SQLInsert (String name ,int w, int h, int a, String sex ) { 
+	public SQLInsert (String uSERID ,int w, int h, int a, String data ) { 
 		try { 
 			SQLDatabaseEngine engine=new SQLDatabaseEngine() ; 
 			Connection conn =engine.getConnection() ; 
 			Statement st = conn.createStatement();
-			if(sex == "M") {
+			if(data == "M") {
 				st.executeUpdate("INSERT INTO customertable " + 
-						"VALUES (name,w, , h, a,sex, 66.47+ (13.75 x w) + (5.0 x h) - (6.75 x a))");
+						"VALUES (name,w, h, a,sex, 66.47+ (13.75* w) + (5.0*h) - (6.75* a))");
 			}
-			else if (sex== "F") {
+			else if (data== "F") {
 				st.executeUpdate("INSERT INTO customertable " + 
-						"VALUES (name,w, , h, a,sex, 66.47+ 665.09 + (9.56 x w) + (1.84 x h) - (4.67 x a)");
+						"VALUES (name,w, h, a,sex, 66.47+ 665.09 + (9.56 * w) + (1.84* h) - (4.67* a)");
 			
 			}
 
