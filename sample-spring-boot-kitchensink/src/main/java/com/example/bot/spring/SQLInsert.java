@@ -13,7 +13,7 @@ public class SQLInsert {
 	public SQLInsert (String uSERID ,int w, int h, int a, String data, KitchenSinkController kc ) { 
 		try { 
 			
-			SQLDatabaseEngine engine=new SQLDatabaseEngine() ; 
+			SQLDatabaseEngine engine=new SQLDatabaseEngine(kc) ; 
 			kc.reminder("connection");
 			Connection conn =engine.getConnection() ; 
 			Statement st = conn.createStatement();
