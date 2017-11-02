@@ -35,8 +35,9 @@ public class SQLInsert {
 			conn.close(); 
 		} catch (Exception e) { 
 			
-			kc.reminder(e.getMessage()); 
+			
 			kc.reminder("Got an exception! "); 
+			kc.reminder(e.getMessage()); 
 		} 
 
 	}
