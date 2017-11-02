@@ -10,14 +10,14 @@ import java.net.URI;
 @Slf4j
 public class SQLInsert { 
 
-	public SQLInsert (String uSERID ,int w, int h, int a, String data, KitchenSinkController kc ) { 
-		try { 
+	public SQLInsert (String uSERID ,int w, int h, int a, String data, KitchenSinkController kc ) {  
 			
 			SQLDatabaseEngine engine=new SQLDatabaseEngine() ; 
 			Connection conn =engine.getConnection() ; 
 			Statement st = conn.createStatement();
+			kc.reminder("connection");
 			if(data == "M") {
-				kc.reminder("connection");
+	
 				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
 						"VALUES ('"+ uSERID + "'," + w +","+ h +","+ a + ", 'M'," + b +");");
@@ -33,10 +33,6 @@ public class SQLInsert {
 			}
 
 			conn.close(); 
-		} catch (Exception e) { 
-			System.err.println("Got an exception! "); 
-			System.err.println(e.getMessage()); 
-		} 
 
 	}
 }
