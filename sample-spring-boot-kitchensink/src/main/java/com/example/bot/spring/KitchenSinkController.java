@@ -323,7 +323,7 @@ public class KitchenSinkController {
 				int height = Integer.parseInt(data[1]);
 				int age = Integer.parseInt(data[2]);
 				reminder(data[3]);
-				SQLInsert re5 =new SQLInsert(USERID,weight,height,age,data[3]);
+				SQLInsert re5 =new SQLInsert(USERID,weight,height,age,data[3], this);
 				replyText(replyToken, "Thanks for using feature 1");
 				break;
 				}
