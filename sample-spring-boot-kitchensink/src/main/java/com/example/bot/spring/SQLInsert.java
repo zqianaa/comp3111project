@@ -14,8 +14,9 @@ public class SQLInsert {
 		try { 
 			
 			SQLDatabaseEngine engine=new SQLDatabaseEngine(kc) ; 
-			kc.reminder("connection");
+			
 			Connection conn =engine.getConnection() ; 
+			kc.reminder("connection");
 			Statement st = conn.createStatement();
 			if(data == "M") {
 				

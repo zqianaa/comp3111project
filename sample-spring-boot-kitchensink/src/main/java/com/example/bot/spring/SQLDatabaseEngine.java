@@ -46,11 +46,11 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 		kc.reminder(username);
 		String password = dbUri.getUserInfo().split(":")[1];
 		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +  "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-        kc.reminder(dbUrl);
-		log.info("Username: {} Password: {}", username, password);
+        		log.info("Username: {} Password: {}", username, password);
 		log.info ("dbUrl: {}", dbUrl);
 		
 		connection = DriverManager.getConnection(dbUrl, username, password);
+		kc.reminder(dbUrl);
 
 		return connection;
 	}
