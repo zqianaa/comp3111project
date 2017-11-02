@@ -16,12 +16,14 @@ public class SQLInsert {
 			Connection conn =engine.getConnection() ; 
 			Statement st = conn.createStatement();
 			if(data == "M") {
+				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
-						"VALUES (name,w, h, a,sex, 66.47+ (13.75* w) + (5.0*h) - (6.75* a))");
+						"VALUES ("+ uSERID + "," + w +","+ h +","+ a + ", 'M'," + b +")");
 			}
 			else if (data== "F") {
+				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
-						"VALUES (name,w, h, a,sex, 66.47+ 665.09 + (9.56 * w) + (1.84* h) - (4.67* a)");
+						"VALUES ("+ uSERID + "," + w +","+ h +","+ a + ", 'M'," + b +")");
 			
 			}
 
