@@ -281,6 +281,7 @@ public class KitchenSinkController {
 				case "1": {
 					USERID = event.getSource().getUserId();
 					this.replyText(replyToken, "Please enter your weight,height,age,sex in the format 'W:H:A:F/M");
+					mark1++;
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
