@@ -287,7 +287,7 @@ public class KitchenSinkController {
 				// modified the reply message according to the feature you are implementing.
 				case "2":
 				{
-				   this.replyText(replyToken, "Please input your menu (Max: 20 Options) today in the format of Option 1, Price 1, ...");
+				   this.replyText(replyToken, "Please input your menu today in the format of Option 1, Price 1, ..., Option n, Price n  (Max: 20 Options)");
 				   mark2++;
 				   break;
 				}
