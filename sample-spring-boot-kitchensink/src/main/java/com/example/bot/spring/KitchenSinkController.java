@@ -106,7 +106,7 @@ public class KitchenSinkController {
 	public ReminderEngine re3;
 	private boolean marker;
 	private String[] option;
-	private int[] price;
+	private String[] price;
 	private ArrayList<String> option2 = new ArrayList<>();
 	private ArrayList<String> price2 = new ArrayList<>();
 
@@ -331,14 +331,14 @@ public class KitchenSinkController {
 					String[] input = text.split(",");
 					reminder(input[0] + input[1]);
 					option = new String[input.length/2];
-					price = new int[input.length/2];
+					price = new String[input.length/2];
 					for (int i = 0; i < input.length; i++) // store menu into array option & price
 					{
 						int j = i % 2;
 						if (j == 0) {
 							option[i / 2] = input[i];
 						} else {
-							price[(i - j) / 2] = Integer.parseInt(input[i]);
+							price[(i - j) / 2] = input[i];
 						}
 					}
 					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
