@@ -366,7 +366,7 @@ public class KitchenSinkController {
 			            reminder("option: " + option[i] + "   " + "price: " + price[i]);
 			         }
 			         mark2 = 0;
-			         replyText(replyToken, "Thanks for using this feature1");
+			         replyText(replyToken, "Thanks for using this feature");
 			      } else 
 			      {
 			         mark2 = 0;
