@@ -359,7 +359,7 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
 				case 1: {
-					mark3 = 0;
+					mark3++;
 					JSONArray jsonArray = JSONArray.fromObject(text);
 					reminder("text");
 					if (jsonArray.size() > 0) {
@@ -369,12 +369,21 @@ public class KitchenSinkController {
 							price2.add(jsonObject.get("price").toString());
 						}
 					}
-					for (String s : option2) {
-						reminder(s);
+					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+				}
+				case 2: {
+					mark3 = 0;
+					if (text.toLowerCase().equals("yes")) {
+						reminder(String.valueOf(option.length));
+						for (int i = 0; i < option2.size(); i++) // testing if the storage is successful
+						{
+							reminder("option: " + option2.get(i) + "   " + "price: " + price2.get(i));
+						}
+						replyText(replyToken, "Thanks for using this feature");
+					} else {
+						replyText(replyToken, "Thanks for using this feature");
 					}
-					for (String s : price2) {
-						reminder(s);
-					}
+					break;
 				}
 			}
 			switch(mark4) {
