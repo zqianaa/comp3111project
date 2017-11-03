@@ -325,7 +325,7 @@ public class KitchenSinkController {
 			{
 				case 1: {
 					mark2++;
-					String[] input = text.split(" ");
+					String[] input = text.split(":");
 					reminder(input[0]);
 					reminder(input[1]);
 					option = new String[input.length/2];
