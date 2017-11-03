@@ -10,5 +10,6 @@
     <orderEntry type="library" name="libs3" level="project" />
     <orderEntry type="module" module-name="main3" />
     <orderEntry type="library" name="json-lib-2.4-jdk15" level="project" />
+    <orderEntry type="library" name="net" level="project" />
   </component>
 </module>
