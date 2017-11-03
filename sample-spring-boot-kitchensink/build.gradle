@@ -20,7 +20,7 @@ dependencies {
     compile project(':line-bot-spring-boot')
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
     // https://mvnrepository.com/artifact/net.sf.json-lib/json-lib
-compile group: 'net.sf.json-lib', name: 'json-lib', version: '2.4'
+compile group: 'net.sf.json-lib', name: 'json-lib', version: '2.4',classifier:'jdk15'
 }
 
 test {
