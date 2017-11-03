@@ -364,6 +364,7 @@ public class KitchenSinkController {
 				case 1: {
 					mark3 = 0;
 					JSONArray jsonArray = JSONArray.fromObject(text);
+					reminder("text");
 					if (jsonArray.size() > 0) {
 						for (int i = 0; i < jsonArray.size(); i++) {
 							JSONObject jsonObject = jsonArray.getJSONObject(i);
