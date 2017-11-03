@@ -94,4 +94,13 @@ public class ReminderEngine {
         marker = mark;
     }
 
+    public int hourgetter() {
+        return hour;
+    }
+
+    public int minutesgetter() {
+        return minutes;
+    }
+
+
 }

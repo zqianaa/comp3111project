@@ -323,6 +323,11 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
 				case 1: {
+					if (re1 != null && re2 != null && re3 != null ) {
+						re1.setmarker(false);
+						re2.setmarker(false);
+						re3.setmarker(false);
+					}
 					String[] input = text.split(",");
 					reminder(input[0] + input[1]);
 					option = new String[input.length/2];
@@ -360,6 +365,11 @@ public class KitchenSinkController {
 			switch(mark3) {
 				case 1: {
 					mark3++;
+					if (re1 != null && re2 != null && re3 != null ) {
+						re1.setmarker(false);
+						re2.setmarker(false);
+						re3.setmarker(false);
+					}
 					JSONArray jsonArray = JSONArray.fromObject(text);
 					reminder("text");
 					if (jsonArray.size() > 0) {
