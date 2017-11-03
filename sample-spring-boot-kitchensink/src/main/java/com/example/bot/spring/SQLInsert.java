@@ -28,7 +28,7 @@ public class SQLInsert {
 			else if (data.equals("F")) {
 				int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
 				st.executeUpdate("INSERT INTO customertable " + 
-						"VALUES ("+ uSERID + "," + w +","+ h +","+ a + ", 'F'," + b +");");
+						"VALUES ('"+ uSERID + "'," + w +","+ h +","+ a + ", 'F'," + b +");");
 			
 			}
 
