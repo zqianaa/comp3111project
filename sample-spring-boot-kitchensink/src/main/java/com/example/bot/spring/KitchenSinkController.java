@@ -92,8 +92,8 @@ public class KitchenSinkController {
 	private final String GREETINGMESSAGE = "Hello" + itscLOGIN + " , welcome to dieting chatbot version1.0";
 	private final String COMMANDMESSAGE = "Please choose the feature you want(Please type '1' for further operation)";
 	private final String COMMAND1 = "(1)Enter Today's statistic(Please type '1' for further operation)";
-	private final String COMMAND2 = "(2)Enter/Change the food preference(Please type '2' for further operation)";
-	private final String COMMAND3 = "(3)Check the recommandation of today's menu(Please type '3' for further operation)";
+	private final String COMMAND2 = "(2)Enter menu in text format(Please type '2' for further operation)";
+	private final String COMMAND3 = "(3)Enter menu in JSON format(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
 	private String preinput = "";
 	private String USERID = "";
