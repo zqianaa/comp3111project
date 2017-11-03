@@ -325,10 +325,9 @@ public class KitchenSinkController {
 			{
 				case 1: {
 					mark2++;
-					if (re1 != null) {
-						re1.setmarker(false);
-					}
 					String[] input = text.split(", ");
+					reminder(input[0]);
+					reminder(input[1]);
 					int option_num = input.length;
 					int haha = 0;
 					int hehe = 0;
