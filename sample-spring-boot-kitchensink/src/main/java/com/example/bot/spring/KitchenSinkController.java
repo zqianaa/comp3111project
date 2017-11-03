@@ -107,8 +107,8 @@ public class KitchenSinkController {
 	public ReminderEngine re2;
 	public ReminderEngine re3;
 	private boolean marker;
-	private String[] option;
-	private int[] price;
+	private String[] option = new String[0];
+	private int[] price = new int [0];
 
 	
 
@@ -353,12 +353,14 @@ public class KitchenSinkController {
 					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
 				}
 				case 2: {
+					mark2 = 0;
 					if (text.toLowerCase().equals("yes")) {
 						for (int i = 0; i < option.length; i++) // testing if the storage is successful
 						{
 							reminder(option[i] + " " + price[i]);
 						}
 						mark2 = 0;
+						replyText(replyToken, "Thanks for using this feature");
 					} else {
 						mark2 = 0;
 						replyText(replyToken, "Thanks for using this feature");
