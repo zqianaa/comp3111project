@@ -22,10 +22,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 import java.util.concurrent.CompletableFuture;
@@ -110,8 +107,8 @@ public class KitchenSinkController {
 	private boolean marker;
 	private String[] option;
 	private int[] price;
-	private String [] option2;
-	private int[] price2;
+	private ArrayList<String> option2 = new ArrayList<>();
+	private ArrayList<String> price2 = new ArrayList<>();
 
 	
 
@@ -368,11 +365,16 @@ public class KitchenSinkController {
 					if (jsonArray.size() > 0) {
 						for (int i = 0; i < jsonArray.size(); i++) {
 							JSONObject jsonObject = jsonArray.getJSONObject(i);
-							reminder(jsonObject.get("option").toString());
-							reminder(jsonObject.get("price").toString());
+							option2.add(jsonObject.get("option").toString());
+							price2.add(jsonObject.get("price").toString());
 						}
 					}
-
+					for (String s : option2) {
+						reminder(s);
+					}
+					for (String s : price2) {
+						reminder(s);
+					}
 				}
 			}
 			switch(mark4) {
