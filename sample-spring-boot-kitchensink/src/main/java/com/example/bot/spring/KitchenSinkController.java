@@ -292,7 +292,9 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "3": {
-					this.replyText(replyToken, "Please enter ");
+					USERID = event.getSource().getUserId();
+					this.replyText(replyToken, "Please enter the food you eat in text or JSON format ");
+					mark3++;
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
@@ -339,6 +341,18 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
+			case 1:{
+				String[] data =text.split(",");
+				SQLInsertFood j =new SQLInsertFood(USERID,data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],this);
+				replyText(replyToken, "Thanks for using feature 3");
+				break;
+			}
+			case 2:{
+				String[] data = text.split(" ");
+				SQLInsertFood j =new SQLInsertFood(USERID,data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],this);
+				replyText(replyToken, "Thanks for using feature 3");
+				break;
+			}
 					
 			}
 			switch(mark4) {
