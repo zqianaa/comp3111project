@@ -107,8 +107,8 @@ public class KitchenSinkController {
 	public ReminderEngine re2;
 	public ReminderEngine re3;
 	private boolean marker;
-	private String[] option = new String[0];
-	private int[] price = new int [0];
+	private String[] option;
+	private int[] price;
 
 	
 
@@ -351,6 +351,7 @@ public class KitchenSinkController {
 						}
 					}
 					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+					break;
 				}
 				case 2: {
 					mark2 = 0;
