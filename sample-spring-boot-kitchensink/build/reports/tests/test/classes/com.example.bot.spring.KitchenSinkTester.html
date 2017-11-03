@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.example.bot.spring.KitchenSinkTester</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.example.bot.spring.KitchenSinkTester</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.bot.spring.html">com.example.bot.spring</a> &gt; KitchenSinkTester</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">9.403s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testFound</td>
+<td>2.048s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testNotFound</td>
+<td>7.355s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>16:32:34.283 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.example.bot.spring.KitchenSinkTester]
+16:32:34.289 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+16:32:34.299 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+16:32:34.317 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.bot.spring.KitchenSinkTester] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+16:32:34.341 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.bot.spring.KitchenSinkTester], using SpringBootContextLoader
+16:32:34.345 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.bot.spring.KitchenSinkTester]: class path resource [com/example/bot/spring/KitchenSinkTester-context.xml] does not exist
+16:32:34.346 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.bot.spring.KitchenSinkTester]: class path resource [com/example/bot/spring/KitchenSinkTesterContext.groovy] does not exist
+16:32:34.346 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.bot.spring.KitchenSinkTester]: no resource found for suffixes {-context.xml, Context.groovy}.
+16:32:34.395 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.400 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.bot.spring.KitchenSinkTester]: using defaults.
+16:32:34.404 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+16:32:34.421 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+16:32:34.422 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+16:32:34.422 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7d89a2d6, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2efe7e79, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@46785030, org.springframework.test.context.support.DirtiesContextTestExecutionListener@43ea6822, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@73c5ed9b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2e15482c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2a68640e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3ad3a219, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@66a629ed, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6276593d]
+16:32:34.427 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.428 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.429 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.429 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.433 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5d01ea1c testClass = KitchenSinkTester, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@79cc393b testClass = KitchenSinkTester, locations = '{}', classes = '{class com.example.bot.spring.KitchenSinkTester, class com.example.bot.spring.SQLDatabaseEngine, class com.example.bot.spring.KitchenSinkTester, class com.example.bot.spring.SQLDatabaseEngine}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.SpringBootTestContextCustomizer@44588e7, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6e64b321, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4c38cd4c], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+16:32:34.434 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.434 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.bot.spring.KitchenSinkTester]
+16:32:34.500 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+16:32:34.501 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+16:32:34.502 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+16:32:34.503 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+16:32:34.504 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [Inlined Test Properties] PropertySource with highest search precedence
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.4.2.RELEASE)
+
+2017-09-29 16:32:44.994  INFO 27075 --- [    Test worker] c.example.bot.spring.KitchenSinkTester   : Starting KitchenSinkTester on qianziandeMacBook-Pro.local with PID 27075 (started by qwmqza in /Users/qwmqza/Desktop/comp31112/Line-chatbot-for-COMP3111/sample-spring-boot-kitchensink)
+2017-09-29 16:32:44.995  INFO 27075 --- [    Test worker] c.example.bot.spring.KitchenSinkTester   : No active profile set, falling back to default profiles: default
+2017-09-29 16:32:45.043  INFO 27075 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@64a6f548: startup date [Fri Sep 29 16:32:45 CST 2017]; root of context hierarchy
+2017-09-29 16:32:45.201  INFO 27075 --- [    Test worker] c.example.bot.spring.KitchenSinkTester   : Started KitchenSinkTester in 10.682 seconds (JVM running for 11.665)
+2017-09-29 16:32:45.236  INFO 27075 --- [    Test worker] c.example.bot.spring.SQLDatabaseEngine   : Username: jqmkimzhfpamjl Password: b3719b3724674b3ff48313fd5899ffb417e707232c83b4f109f6d3a7e7119f38
+2017-09-29 16:32:45.237  INFO 27075 --- [    Test worker] c.example.bot.spring.SQLDatabaseEngine   : dbUrl: jdbc:postgresql://ec2-54-163-235-175.compute-1.amazonaws.com:5432/d78voc1lt46na8?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
+2017-09-29 16:32:52.580  INFO 27075 --- [    Test worker] c.example.bot.spring.SQLDatabaseEngine   : Username: jqmkimzhfpamjl Password: b3719b3724674b3ff48313fd5899ffb417e707232c83b4f109f6d3a7e7119f38
+2017-09-29 16:32:52.580  INFO 27075 --- [    Test worker] c.example.bot.spring.SQLDatabaseEngine   : dbUrl: jdbc:postgresql://ec2-54-163-235-175.compute-1.amazonaws.com:5432/d78voc1lt46na8?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 3.5</a> at 2017-9-29 16:32:54</p>
+</div>
+</div>
+</body>
+</html>
