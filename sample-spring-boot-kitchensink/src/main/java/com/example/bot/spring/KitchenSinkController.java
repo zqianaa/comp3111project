@@ -285,10 +285,11 @@ public class KitchenSinkController {
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
-				case "2": {
-					this.replyText(replyToken, "Please enter");
-					mark2++;
-					break;
+				case "2":
+				{
+				   this.replyText(replyToken, "Please input your menu (Max: 20 Options) today in the format of Option 1, Price 1, ...");
+				   mark2++;
+				   break;
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "3": {
@@ -330,12 +331,44 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
-				case 1: {
-					mark2 = 0;
-					if (re1 != null) {
-						re1.setmarker(false);
-					}
-				}
+			   case 1: {
+			      if (re1 != null && re2 != null && re3 != null ) {
+			         re1.setmarker(false);
+			         re2.setmarker(false);
+			         re3.setmarker(false);
+			      }
+			      String[] input = text.split(",");
+			      reminder(input[0] + input[1]);
+			      option = new String[input.length/2];
+			      price = new int[input.length/2];
+			      for (int i = 0; i < input.length; i++) // store menu into array option & price
+			      {
+			         int j = i % 2;
+			         if (j == 0) {
+			            option[i / 2] = input[i];
+			         } else {
+			            price[(i - j) / 2] = Integer.parseInt(input[i]);
+			         }
+			      }
+			      replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+			      mark2++;
+			      break;
+			   }
+			   case 2: {
+			      if (text.toLowerCase().equals("yes")) {
+			         reminder(String.valueOf(option.length));
+			         for (int i = 0; i < option.length; i++) // testing if the storage is successful
+			         {
+			            reminder("option: " + option[i] + "   " + "price: " + price[i]);
+			         }
+			         mark2 = 0;
+			         replyText(replyToken, "Thanks for using this feature1");
+			      } else {
+			         mark2 = 0;
+			         replyText(replyToken, "Thanks for using this feature");
+			      }
+			      break;
+			   }
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
