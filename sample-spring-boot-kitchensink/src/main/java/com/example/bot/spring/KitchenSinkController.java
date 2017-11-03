@@ -35,8 +35,6 @@ import net.sf.json.JSONObject;
 
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.profile.UserProfileResponse;
-
-import com.oracle.javafx.jmx.json.JSONReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
