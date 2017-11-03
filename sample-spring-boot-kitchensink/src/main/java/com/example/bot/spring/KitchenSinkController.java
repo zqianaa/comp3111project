@@ -233,6 +233,7 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
 		String text = content.getText();
+		USERID = event.getSource().getUserId();
 		log.info("Got text message from {}: {}", replyToken, text);
 		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 ==0) {
 			switch (text) {
@@ -298,7 +299,6 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "4": {
-					USERID = event.getSource().getUserId();
 					reminder("haha");
 					this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS', first for breakfast:");
 					mark4++;
@@ -323,7 +323,6 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
 				case 1: {
-					mark2++;
 					reminder("test");
 					String[] input = text.split(":");
 					reminder(input[0] + input[1]);
@@ -339,9 +338,11 @@ public class KitchenSinkController {
 						}
 					}
 					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+					mark2++;
 					break;
 				}
 				case 2: {
+					reminder("test2");
 					if (text.toLowerCase().equals("yes")) {
 						reminder(String.valueOf(option.length));
 						for (int i = 0; i < option.length; i++) // testing if the storage is successful
