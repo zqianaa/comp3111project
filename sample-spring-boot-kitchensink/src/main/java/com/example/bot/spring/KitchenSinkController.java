@@ -343,7 +343,7 @@ public class KitchenSinkController {
 			      price = new int[input.length/2];
 			      for (int i = 0; i < input.length; i++) // store menu into array option & price
 			      {
-			         int j = i % 2;
+			         int j = i % 2; //remainder
 			         if (j == 0) 
 			         {
 			            option[i / 2] = input[i];
