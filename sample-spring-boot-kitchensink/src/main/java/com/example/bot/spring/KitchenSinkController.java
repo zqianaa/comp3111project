@@ -375,7 +375,6 @@ public class KitchenSinkController {
 				case 2: {
 					mark3 = 0;
 					if (text.toLowerCase().equals("yes")) {
-						reminder(String.valueOf(option.length));
 						for (int i = 0; i < option2.size(); i++) // testing if the storage is successful
 						{
 							reminder("option: " + option2.get(i) + "   " + "price: " + price2.get(i));
