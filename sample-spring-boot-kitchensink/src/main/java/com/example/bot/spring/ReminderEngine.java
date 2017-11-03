@@ -28,6 +28,8 @@ public class ReminderEngine {
             public void run() {
                 if (marker) {
                     kc.reminder("Don't forget to enter your menu!");
+                } else {
+                    marker = true;
                 }
             }
         };

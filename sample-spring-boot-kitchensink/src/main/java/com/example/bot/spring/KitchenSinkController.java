@@ -107,6 +107,8 @@ public class KitchenSinkController {
 	public ReminderEngine re2;
 	public ReminderEngine re3;
 	private boolean marker;
+	private String[] option;
+	private int[] price;
 
 	
 
@@ -283,8 +285,9 @@ public class KitchenSinkController {
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
-				case "2": {
-					this.replyText(replyToken, "Please enter");
+				case "2":
+				{
+					this.replyText(replyToken, "Please input your menu (Max: 20 Options) today in the format of Option 1, Price 1, ...");
 					mark2++;
 					break;
 				}
@@ -318,12 +321,49 @@ public class KitchenSinkController {
 
 			}
 			// modified the 'switch' command according to the feature you are implementing.
-			switch(mark2) {
+			switch(mark2)
+			{
 				case 1: {
-					mark2 = 0;
+					mark2++;
 					if (re1 != null) {
 						re1.setmarker(false);
 					}
+					String[] input = text.split(", ");
+					int option_num = input.length;
+					int haha = 0;
+					int hehe = 0;
+					if (input.length % 2 == 0) {
+						haha = input.length / 2;
+						hehe = input.length / 2;
+					} else {
+						haha = input.length / 2 + 1;
+						hehe = input.length / 2;
+					}
+					option = new String[haha];
+					price = new int[hehe];
+					for (int i = 0; i < option_num; i++) // store menu into array option & price
+					{
+						int j = i % 2;
+						if (j == 0) {
+							option[i / 2] = input[i];
+						} else {
+							price[(i - j) / 2] = Integer.parseInt(input[i]);
+						}
+					}
+					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+				}
+				case 2: {
+					if (text.toLowerCase().equals("yes")) {
+						for (int i = 0; i < option.length; i++) // testing if the storage is successful
+						{
+							reminder(option[i] + " " + price[i]);
+						}
+						mark2 = 0;
+					} else {
+						mark2 = 0;
+						replyText(replyToken, "Thanks for using this feature");
+					}
+					break;
 				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
