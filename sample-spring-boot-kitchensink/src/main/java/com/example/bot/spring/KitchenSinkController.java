@@ -344,18 +344,22 @@ public class KitchenSinkController {
 			      for (int i = 0; i < input.length; i++) // store menu into array option & price
 			      {
 			         int j = i % 2;
-			         if (j == 0) {
+			         if (j == 0) 
+			         {
 			            option[i / 2] = input[i];
-			         } else {
+			         } 
+			         else 
+			         {
 			            price[(i - j) / 2] = Integer.parseInt(input[i]);
 			         }
 			      }
-			      replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+			      replyText(replyToken, "Type 'yes' to revise the inputted menu, type 'no' otherwise);
 			      mark2++;
 			      break;
 			   }
 			   case 2: {
-			      if (text.toLowerCase().equals("yes")) {
+			      if (text.toLowerCase().equals("yes")) 
+			      {
 			         reminder(String.valueOf(option.length));
 			         for (int i = 0; i < option.length; i++) // testing if the storage is successful
 			         {
@@ -363,7 +367,8 @@ public class KitchenSinkController {
 			         }
 			         mark2 = 0;
 			         replyText(replyToken, "Thanks for using this feature1");
-			      } else {
+			      } else 
+			      {
 			         mark2 = 0;
 			         replyText(replyToken, "Thanks for using this feature");
 			      }
