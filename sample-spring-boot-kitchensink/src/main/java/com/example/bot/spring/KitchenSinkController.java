@@ -325,22 +325,12 @@ public class KitchenSinkController {
 			{
 				case 1: {
 					mark2++;
-					String[] input = text.split(", ");
+					String[] input = text.split(",");
 					reminder(input[0]);
 					reminder(input[1]);
-					int option_num = input.length;
-					int haha = 0;
-					int hehe = 0;
-					if (input.length % 2 == 0) {
-						haha = input.length / 2;
-						hehe = input.length / 2;
-					} else {
-						haha = input.length / 2 + 1;
-						hehe = input.length / 2;
-					}
-					option = new String[haha];
-					price = new int[hehe];
-					for (int i = 0; i < option_num; i++) // store menu into array option & price
+					option = new String[input.length/2];
+					price = new int[input.length/2];
+					for (int i = 0; i < input.length; i++) // store menu into array option & price
 					{
 						int j = i % 2;
 						if (j == 0) {
