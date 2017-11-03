@@ -325,9 +325,10 @@ public class KitchenSinkController {
 			{
 				case 1: {
 					mark2++;
+					this.reminder("test");
 					String[] input = text.split(":");
-					reminder(input[0]);
-					reminder(input[1]);
+					this.reminder(input[0]);
+					this.reminder(input[1]);
 					option = new String[input.length/2];
 					price = new int[input.length/2];
 					for (int i = 0; i < input.length; i++) // store menu into array option & price
