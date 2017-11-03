@@ -282,7 +282,9 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "1": {
-					this.replyText(replyToken, "");
+					USERID = event.getSource().getUserId();
+					this.replyText(replyToken, "Please enter your weight,height,age,sex in the format 'W:H:A:F/M");
+					mark1++;
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
@@ -318,7 +320,16 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
-
+				case 1:{
+					String[] data =text.split(":");
+					int weight = Integer.parseInt(data[0]);
+					int height = Integer.parseInt(data[1]);
+					int age = Integer.parseInt(data[2]);
+					reminder(data[3]);
+					SQLInsert re5 =new SQLInsert(USERID,weight,height,age,data[3], this);
+					replyText(replyToken, "Thanks for using feature 1");
+					break;
+				}
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
