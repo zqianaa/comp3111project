@@ -343,7 +343,6 @@ public class KitchenSinkController {
 					break;
 				}
 				case 2: {
-					mark2 = 0;
 					if (text.toLowerCase().equals("yes")) {
 						reminder(String.valueOf(option.length));
 						for (int i = 0; i < option.length; i++) // testing if the storage is successful
@@ -351,7 +350,7 @@ public class KitchenSinkController {
 							reminder(option[i] + "   " + price[i]);
 						}
 						mark2 = 0;
-						replyText(replyToken, "Thanks for using this feature");
+						replyText(replyToken, "Thanks for using this feature1");
 					} else {
 						mark2 = 0;
 						replyText(replyToken, "Thanks for using this feature");
