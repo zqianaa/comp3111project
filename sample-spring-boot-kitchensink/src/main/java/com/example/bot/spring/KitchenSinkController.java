@@ -292,11 +292,10 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "3": {
-					USERID = event.getSource().getUserId();
-					this.replyText(replyToken, "Please enter the food you eat in text or JSON format ");
-					mark3++;
-					break;
-				}
+					   mark3++;
+					   this.replyText(replyToken, "Please enter the menu in JSONArray format");
+					   break;
+					}
 				// modified the reply message according to the feature you are implementing.
 				case "4": {
 					USERID = event.getSource().getUserId();
@@ -341,19 +340,38 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
-			case 1:{
-				String[] data =text.split(",");
-				SQLInsertFood j =new SQLInsertFood(USERID,data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],this);
-				replyText(replyToken, "Thanks for using feature 3");
-				break;
-			}
-			case 2:{
-				String[] data = text.split(" ");
-				SQLInsertFood j =new SQLInsertFood(USERID,data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],this);
-				replyText(replyToken, "Thanks for using feature 3");
-				break;
-			}
-					
+			case 1: {
+			      mark3++;
+			      if (re1 != null && re2 != null && re3 != null ) {
+			         re1.setmarker(false);
+			         re2.setmarker(false);
+			         re3.setmarker(false);
+			      }
+			      JSONArray jsonArray = JSONArray.fromObject(text);
+			      reminder("text");
+			      if (jsonArray.size() > 0) {
+			         for (int i = 0; i < jsonArray.size(); i++) {
+			            JSONObject jsonObject = jsonArray.getJSONObject(i);
+			            option2.add(jsonObject.get("option").toString());
+			            price2.add(jsonObject.get("price").toString());
+			         }
+			      }
+			      replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+			      break;
+			   }
+			   case 2: {
+			      mark3 = 0;
+			      if (text.toLowerCase().equals("yes")) {
+			         for (int i = 0; i < option2.size(); i++) // testing if the storage is successful
+			         {
+			            reminder("option: " + option2.get(i) + "   " + "price: " + price2.get(i));
+			         }
+			         replyText(replyToken, "Thanks for using this feature");
+			      } else {
+			         replyText(replyToken, "Thanks for using this feature");
+			      }
+			      break;
+			   }
 			}
 			switch(mark4) {
 				case 1: {
