@@ -366,14 +366,15 @@ public class KitchenSinkController {
 				case 1: {
 					mark3 = 0;
 					JSONArray jsonArray = JSONArray.fromObject(text);
-					if(jsonArray.size() > 0) {
-						for(int i = 0; i < jsonArray.size(); i++){
+					if (jsonArray.size() > 0) {
+						for (int i = 0; i < jsonArray.size(); i++) {
 							JSONObject jsonObject = jsonArray.getJSONObject(i);
-							option2[i] = (String)jsonObject.get("option");
-							price2[i] = (Integer)jsonObject.get("price");
+							option2[i] = (String) jsonObject.get("option");
+							price2[i] = (Integer) jsonObject.get("price");
+						}
 					}
+					reminder(option2[0]);
 				}
-				reminder(option2[0]);
 			}
 			switch(mark4) {
 				case 1: {
