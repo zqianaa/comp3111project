@@ -370,6 +370,7 @@ public class KitchenSinkController {
 						}
 					}
 					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+					break;
 				}
 				case 2: {
 					mark3 = 0;
