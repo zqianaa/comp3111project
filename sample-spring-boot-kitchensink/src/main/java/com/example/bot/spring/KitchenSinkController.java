@@ -30,10 +30,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 
+import com.oracle.javafx.jmx.json.JSONReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -109,6 +112,8 @@ public class KitchenSinkController {
 	private boolean marker;
 	private String[] option;
 	private int[] price;
+	private String [] option2;
+	private int[] price2;
 
 	
 
@@ -294,12 +299,12 @@ public class KitchenSinkController {
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "3": {
-					this.replyText(replyToken, "Please enter");
+					mark3++;
+					this.replyText(replyToken, "Please enter the menu in JSONArray format");
 					break;
 				}
 				// modified the reply message according to the feature you are implementing.
 				case "4": {
-					reminder("haha");
 					this.replyText(replyToken, "Please enter the time in the format 'HH:MM:SS', first for breakfast:");
 					mark4++;
 					break;
@@ -323,8 +328,7 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
 				case 1: {
-					reminder("test");
-					String[] input = text.split(":");
+					String[] input = text.split(",");
 					reminder(input[0] + input[1]);
 					option = new String[input.length/2];
 					price = new int[input.length/2];
@@ -342,12 +346,11 @@ public class KitchenSinkController {
 					break;
 				}
 				case 2: {
-					reminder("test2");
 					if (text.toLowerCase().equals("yes")) {
 						reminder(String.valueOf(option.length));
 						for (int i = 0; i < option.length; i++) // testing if the storage is successful
 						{
-							reminder(option[i] + "   " + price[i]);
+							reminder("option: " + option[i] + "   " + "price: " + price[i]);
 						}
 						mark2 = 0;
 						replyText(replyToken, "Thanks for using this feature1");
@@ -360,7 +363,17 @@ public class KitchenSinkController {
 			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark3) {
-
+				case 1: {
+					mark3 = 0;
+					JSONArray jsonArray = JSONArray.fromObject(text);
+					if(jsonArray.size() > 0) {
+						for(int i = 0; i < jsonArray.size(); i++){
+							JSONObject jsonObject = jsonArray.getJSONObject(i);
+							option2[i] = (String)jsonObject.get("option");
+							price2[i] = (Integer)jsonObject.get("price");
+					}
+				}
+				reminder(option2[0]);
 			}
 			switch(mark4) {
 				case 1: {
