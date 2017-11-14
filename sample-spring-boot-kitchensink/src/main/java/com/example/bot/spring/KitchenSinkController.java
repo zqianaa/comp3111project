@@ -24,8 +24,6 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Consumer;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -55,22 +53,13 @@ import com.linecorp.bot.model.event.message.ImageMessageContent;
 import com.linecorp.bot.model.event.message.LocationMessageContent;
 import com.linecorp.bot.model.event.message.StickerMessageContent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
-import com.linecorp.bot.model.event.source.GroupSource;
-import com.linecorp.bot.model.event.source.RoomSource;
-import com.linecorp.bot.model.event.source.Source;
 import com.linecorp.bot.model.message.AudioMessage;
 import com.linecorp.bot.model.message.ImageMessage;
-import com.linecorp.bot.model.message.ImagemapMessage;
 import com.linecorp.bot.model.message.LocationMessage;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.message.TemplateMessage;
 import com.linecorp.bot.model.message.TextMessage;
-import com.linecorp.bot.model.message.imagemap.ImagemapArea;
-import com.linecorp.bot.model.message.imagemap.ImagemapBaseSize;
-import com.linecorp.bot.model.message.imagemap.MessageImagemapAction;
-import com.linecorp.bot.model.message.imagemap.URIImagemapAction;
-import com.linecorp.bot.model.message.template.ButtonsTemplate;
 import com.linecorp.bot.model.message.template.CarouselColumn;
 import com.linecorp.bot.model.message.template.CarouselTemplate;
 import com.linecorp.bot.model.message.template.ConfirmTemplate;
@@ -81,8 +70,6 @@ import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import lombok.NonNull;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
-
-import java.net.URI;
 
 @Slf4j
 @LineMessageHandler
@@ -109,6 +96,8 @@ public class KitchenSinkController {
 	private String[] price;
 	private ArrayList<String> option2 = new ArrayList<>();
 	private ArrayList<String> price2 = new ArrayList<>();
+	private getCode codelist = new getCode();
+	private static int icecreamnumber = 0;
 
 	
 
@@ -233,9 +222,10 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
 		String text = content.getText();
+		String parttext = text.substring(0,3);
 		USERID = event.getSource().getUserId();
 		log.info("Got text message from {}: {}", replyToken, text);
-		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 ==0) {
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
 				case "profile": {
 					String userId = event.getSource().getUserId();
@@ -306,6 +296,11 @@ public class KitchenSinkController {
 					mark4++;
 					break;
 				}
+				case "friend": {
+					int code = codelist.getnumber();
+					SQLInsertion insertcode = new SQLInsertCode(code, USERID, this);
+					replyText(replyToken, "This is your invitation code" + code);
+				}
 				default: {
 					if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")) {
 						this.replyText(
@@ -315,6 +310,21 @@ public class KitchenSinkController {
 						preinput = text;
 					}
 				}
+			}
+		} else if (parttext.toLowerCase().equals("code")) {
+			String code = text.substring(4);
+			String userid = null;
+			try {
+				if (code.length() != 6) {
+					throw new Exception("Illegal code!");
+				}
+				SQLSearching sq = new SQLSearchCode(code, this);
+				USERID = sq.Search();
+				if (USERID == null) {
+					throw new Exception("Code Not Found!");
+				}
+			} catch (Exception e) {
+				reminder(e.getMessage());
 			}
 		} else {
 			// modified the 'switch' command according to the feature you are implementing.
@@ -326,7 +336,7 @@ public class KitchenSinkController {
 					int height = Integer.parseInt(data[1]);
 					int age = Integer.parseInt(data[2]);
 					reminder(data[3]);
-					SQLInsert re5 =new SQLInsert(USERID,weight,height,age,data[3], this);
+					SQLInsertion re5 =new SQLInsertUserStatistic(USERID,weight,height,age,data[3], this);
 					replyText(replyToken, "Thanks for using feature 1");
 					break;
 				}

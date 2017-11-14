@@ -8,7 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URI;
 
 @Slf4j
-public class SQLInsert implements SQLInsertion {
+public class SQLInsertUserStatistic implements SQLInsertion {
     String uSERID;
     int w;
     int h;
@@ -16,7 +16,7 @@ public class SQLInsert implements SQLInsertion {
     String data;
     KitchenSinkController kc;
 
-    public SQLInsert (String uSERID ,int w, int h, int a, String data, KitchenSinkController kc ) {
+    public SQLInsertUserStatistic(String uSERID , int w, int h, int a, String data, KitchenSinkController kc ) {
         this.a = a;
         this.data = data;
         this.kc = kc;
@@ -25,6 +25,7 @@ public class SQLInsert implements SQLInsertion {
         this.h = h;
     }
 
+    @Override
     public void Insert() {
         try {
             SQLDatabaseEngine engine=new SQLDatabaseEngine(kc) ;
