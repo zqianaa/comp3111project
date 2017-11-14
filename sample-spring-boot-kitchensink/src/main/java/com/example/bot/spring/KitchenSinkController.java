@@ -300,6 +300,7 @@ public class KitchenSinkController {
 					int code = codelist.getnumber();
 					SQLInsertion insertcode = new SQLInsertCode(code, USERID, this);
 					replyText(replyToken, "This is your invitation code" + code);
+					break;
 				}
 				default: {
 					if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")) {

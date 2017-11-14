@@ -1,7 +1,4 @@
 package com.example.bot.spring;
-
-import sun.jvm.hotspot.code.CodeBlob;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
