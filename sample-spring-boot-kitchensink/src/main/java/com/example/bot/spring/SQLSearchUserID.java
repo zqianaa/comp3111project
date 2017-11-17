@@ -24,7 +24,7 @@ public class SQLSearchUserID {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement ("SELECT * FROM respond where input like concat('%', ?, '%')");
+            PreparedStatement stmt = conn.prepareStatement ("SELECT * FROM " + TableName + " where input like concat('%', ?, '%')");
             stmt.setString(1, USERID);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
