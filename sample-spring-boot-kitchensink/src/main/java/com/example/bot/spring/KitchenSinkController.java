@@ -97,6 +97,7 @@ public class KitchenSinkController {
 	private ArrayList<String> option2 = new ArrayList<>();
 	private ArrayList<String> price2 = new ArrayList<>();
 	private getCode codelist = new getCode();
+	private CurrTime function = new CurrTime();
 	private static int icecreamnumber = 0;
 
 	
@@ -227,6 +228,11 @@ public class KitchenSinkController {
 			parttext = text.substring(0, 3);
 		}
 		USERID = event.getSource().getUserId();
+		//CurrTime ctime = new CurrTime();
+		//SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
+		//if (!searchUserID.search()) {
+		//	SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
+		//}
 		log.info("Got text message from {}: {}", replyToken, text);
 		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
@@ -316,6 +322,10 @@ public class KitchenSinkController {
 				}
 			}
 		} else if (parttext.toLowerCase().equals("code")) {
+			SQLSearchUserID su = new SQLSearchUserID(USERID, "USERIDTable", this);
+			if (su.search()) {
+				replyText(replyToken,"Sorry, you have already got an coppen");
+			}
 			String code = text.substring(4);
 			String userid = null;
 			try {
