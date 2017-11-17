@@ -227,6 +227,7 @@ public class KitchenSinkController {
 		if (text.length() > 4) {
 			parttext = text.substring(0, 3);
 		}
+		reminder(parttext);
 		USERID = event.getSource().getUserId();
 		//CurrTime ctime = new CurrTime();
 		//SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
