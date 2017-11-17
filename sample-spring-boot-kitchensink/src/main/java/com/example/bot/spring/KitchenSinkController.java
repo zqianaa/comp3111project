@@ -222,13 +222,13 @@ public class KitchenSinkController {
 
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
+		USERID = event.getSource().getUserId();
 		String text = content.getText();
 		String parttext = "";
 		if (text.length() > 4) {
-			parttext = text.substring(0, 3);
+			parttext = text.substring(0, 4);
 		}
 		reminder(parttext);
-		USERID = event.getSource().getUserId();
 		//CurrTime ctime = new CurrTime();
 		//SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
 		//if (!searchUserID.search()) {
