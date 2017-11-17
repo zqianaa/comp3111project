@@ -308,6 +308,7 @@ public class KitchenSinkController {
 				case "friend": {
 					int code = codelist.getnumber();
 					SQLInsertion insertcode = new SQLInsertCode(code, USERID, this);
+					insertcode.Insert();
 					replyText(replyToken, "This is your invitation code" + code);
 					break;
 				}
