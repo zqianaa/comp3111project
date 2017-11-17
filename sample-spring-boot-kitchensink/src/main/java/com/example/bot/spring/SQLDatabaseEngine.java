@@ -43,7 +43,6 @@ public class SQLDatabaseEngine extends DatabaseEngine {
 		
 		String username = dbUri.getUserInfo().split(":")[0];
 		String password = dbUri.getUserInfo().split(":")[1];
-		kc.reminder(username);
 		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +  "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
         		log.info("Username: {} Password: {}", username, password);
 		log.info ("dbUrl: {}", dbUrl);

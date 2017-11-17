@@ -335,11 +335,15 @@ public class KitchenSinkController {
 					throw new Exception("Illegal code!");
 				}
 				SQLSearching sq = new SQLSearchCode(code, this);
-				USERID = sq.Search();
-				if (USERID == null) {
+				userid = sq.Search();
+				PushMessage pushmessage = new PushMessage(userid, new TextMessage("Got a coppen, invitor"));
+				lineMessagingClient.pushMessage(pushmessage);
+				reminder("Got a coppen");
+				if (userid == null) {
 					throw new Exception("Code Not Found!");
 				}
-				reminder(USERID);
+
+				reminder(userid);
 			} catch (Exception e) {
 				reminder(e.getMessage());
 			}
