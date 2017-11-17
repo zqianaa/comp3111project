@@ -20,7 +20,7 @@ public class SQLSearchCode implements SQLSearching {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement ("SELECT * FROM codetable where input like concat('%', ?, '%')");
+            PreparedStatement stmt = conn.prepareStatement ("SELECT * FROM codetable where code like concat('%', ?, '%')");
             stmt.setString(1, Code);
             ResultSet rs = stmt.executeQuery();
             while (USERID == null && rs.next()) {
