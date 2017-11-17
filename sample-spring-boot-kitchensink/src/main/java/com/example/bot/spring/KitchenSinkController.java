@@ -222,7 +222,10 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
 		String text = content.getText();
-		String parttext = text.substring(0,3);
+		String parttext = "";
+		if (text.length() > 4) {
+			parttext = text.substring(0, 3);
+		}
 		USERID = event.getSource().getUserId();
 		log.info("Got text message from {}: {}", replyToken, text);
 		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
