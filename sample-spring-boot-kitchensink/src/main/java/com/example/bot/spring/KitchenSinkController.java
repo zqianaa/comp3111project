@@ -329,6 +329,13 @@ public class KitchenSinkController {
 			if (su.search()) {
 				replyText(replyToken,"Sorry, you have already got an coppen");
 			}
+			JudgeTime gt = new JudgeTime(currTime, USERID, this);
+			boolean test = gt.judge();
+			if (test) {
+				reminder("true");
+			} else {
+				reminder("false");
+			}
 			String code = text.substring(4);
 			String userid = null;
 			try {
