@@ -326,36 +326,46 @@ public class KitchenSinkController {
 			}
 		} else if (parttext.toLowerCase().equals("code")) {
 			SQLSearchUserID su = new SQLSearchUserID(USERID, "USERIDTable", this);
-			if (su.search()) {
-				replyText(replyToken,"Sorry, you have already got an coppen");
-			}
 			JudgeTime gt = new JudgeTime(currTime, USERID, this);
-			boolean test = gt.judge();
-			if (test) {
-				reminder("true");
-			} else {
-				reminder("false");
-			}
 			String code = text.substring(4);
 			String userid = null;
-			try {
-				if (code.length() != 6) {
-					throw new Exception("Illegal code!");
+			if (su.search()) {
+				replyText(replyToken,"Sorry, you have already got an coppen");
+			} else if (gt.judge()) {
+				replyText(replyToken, "Sorry, you cannot attend this activity.");
+			} else {
+				try {
+					if (code.length() != 6) {
+						throw new Exception("Illegal code!");
+					}
+					SQLInsertUSERID siu = new SQLInsertUSERID(USERID, this);
+					siu.Insert();
+					SQLSearching sq = new SQLSearchCode(code, this);
+					userid = sq.Search();
+					if (userid == null) {
+						throw new Exception("Code Not Found!");
+					}
+					if (userid.equals(USERID)) {
+						throw new Exception("You cannot invite yourself!");
+					}
+					if (icecreamnumber <= 5000) {
+						icecreamnumber++;
+						reminder("Got a coppen");
+					} else {
+						reminder("Sorry, all the coppen has already sent out.");
+					}
+					if (icecreamnumber <= 5000) {
+						PushMessage pushmessage = new PushMessage(userid, new TextMessage("Got a coppen, invitor"));
+						lineMessagingClient.pushMessage(pushmessage);
+						icecreamnumber++;
+					} else {
+						PushMessage pushmessage = new PushMessage(userid, new TextMessage("invitation failed,all the coppens has been sent out"));
+						lineMessagingClient.pushMessage(pushmessage);
+					}
+					reminder(userid);
+				} catch (Exception e) {
+					reminder(e.getMessage());
 				}
-				SQLInsertUSERID siu = new SQLInsertUSERID(USERID, this);
-				siu.Insert();
-				SQLSearching sq = new SQLSearchCode(code, this);
-				userid = sq.Search();
-				PushMessage pushmessage = new PushMessage(userid, new TextMessage("Got a coppen, invitor"));
-				lineMessagingClient.pushMessage(pushmessage);
-				reminder("Got a coppen");
-				if (userid == null) {
-					throw new Exception("Code Not Found!");
-				}
-
-				reminder(userid);
-			} catch (Exception e) {
-				reminder(e.getMessage());
 			}
 		} else {
 			// modified the 'switch' command according to the feature you are implementing.
