@@ -223,6 +223,7 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
 		USERID = event.getSource().getUserId();
+		reminder(USERID);
 		String text = content.getText();
 		String parttext = "";
 		if (text.length() > 4) {
