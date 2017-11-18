@@ -229,11 +229,17 @@ public class KitchenSinkController {
 			parttext = text.substring(0, 4);
 		}
 		reminder(parttext);
-		//CurrTime ctime = new CurrTime();
-		//SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
-		//if (!searchUserID.search()) {
-		//	SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
-		//}
+		CurrTime ctime = new CurrTime();
+		SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
+		boolean test = searchUserID.search();
+		if (test) {
+			reminder("true");
+		} else {
+			reminder("false");
+		}
+		if (!searchUserID.search()) {
+			SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
+		}
 		log.info("Got text message from {}: {}", replyToken, text);
 		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
