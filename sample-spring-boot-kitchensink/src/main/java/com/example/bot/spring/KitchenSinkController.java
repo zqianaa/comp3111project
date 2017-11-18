@@ -325,10 +325,10 @@ public class KitchenSinkController {
 				}
 			}
 		} else if (parttext.toLowerCase().equals("code")) {
-			//SQLSearchUserID su = new SQLSearchUserID(USERID, "USERIDTable", this);
-			//if (su.search()) {
-			//	replyText(replyToken,"Sorry, you have already got an coppen");
-			//}
+			SQLSearchUserID su = new SQLSearchUserID(USERID, "USERIDTable", this);
+			if (su.search()) {
+				replyText(replyToken,"Sorry, you have already got an coppen");
+			}
 			String code = text.substring(4);
 			String userid = null;
 			try {
