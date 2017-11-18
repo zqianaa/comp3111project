@@ -99,6 +99,7 @@ public class KitchenSinkController {
 	private getCode codelist = new getCode();
 	private CurrTime function = new CurrTime();
 	private static int icecreamnumber = 0;
+	private CurrTime currTime = new CurrTime();
 
 	
 
@@ -223,21 +224,13 @@ public class KitchenSinkController {
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
 		USERID = event.getSource().getUserId();
-		reminder(USERID);
 		String text = content.getText();
 		String parttext = "";
 		if (text.length() > 4) {
 			parttext = text.substring(0, 4);
 		}
-		reminder(parttext);
 		CurrTime ctime = new CurrTime();
 		SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
-		boolean test = searchUserID.search();
-		if (test) {
-			reminder("true");
-		} else {
-			reminder("false");
-		}
 		if (!searchUserID.search()) {
 			SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
 			time.Insert();
@@ -342,6 +335,8 @@ public class KitchenSinkController {
 				if (code.length() != 6) {
 					throw new Exception("Illegal code!");
 				}
+				SQLInsertUSERID siu = new SQLInsertUSERID(USERID, this);
+				siu.Insert();
 				SQLSearching sq = new SQLSearchCode(code, this);
 				userid = sq.Search();
 				PushMessage pushmessage = new PushMessage(userid, new TextMessage("Got a coppen, invitor"));

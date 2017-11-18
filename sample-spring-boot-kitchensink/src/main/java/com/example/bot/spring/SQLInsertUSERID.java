@@ -21,7 +21,7 @@ public class SQLInsertUSERID implements SQLInsertion {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
             Statement st = conn.createStatement();
-            st.executeUpdate("INSERT INTO USERIDtable " +
+            st.executeUpdate("INSERT INTO useridtable " +
                     "VALUES ('"+ USERID + "');");
             conn.close();
         } catch (Exception e) {
