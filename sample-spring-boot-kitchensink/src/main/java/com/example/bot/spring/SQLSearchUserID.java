@@ -27,6 +27,7 @@ public class SQLSearchUserID {
             PreparedStatement stmt = conn.prepareStatement ("SELECT * FROM " + TableName + " where userid like concat('%', ?, '%')");
             stmt.setString(1, USERID);
             ResultSet rs = stmt.executeQuery();
+            kc.reminder("this is a test");
             while (rs.next()) {
                 if (rs.getString(1).equals(USERID)) {
                     rt = true;

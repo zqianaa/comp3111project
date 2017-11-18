@@ -239,6 +239,7 @@ public class KitchenSinkController {
 		}
 		if (!searchUserID.search()) {
 			SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
+			time.Insert();
 		}
 		log.info("Got text message from {}: {}", replyToken, text);
 		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
