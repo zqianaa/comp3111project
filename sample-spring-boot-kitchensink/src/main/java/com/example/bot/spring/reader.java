@@ -1,13 +1,12 @@
+package com.example.bot.spring;
 import java.sql.Connection;
 import java.sql.Statement;
-package com.example.bot.spring;
 
 import sun.jvm.hotspot.code.CodeBlob;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-package com.example.bot.spring;
 
 import sun.jvm.hotspot.code.CodeBlob;
 /**
