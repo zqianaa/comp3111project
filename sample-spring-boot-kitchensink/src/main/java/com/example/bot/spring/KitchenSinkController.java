@@ -88,6 +88,7 @@ public class KitchenSinkController {
 	private int mark2 = 0;
 	private int mark3 = 0;
 	private int mark4 = 0;
+	private int mark5 = 0;
 	public ReminderEngine re1;
 	public ReminderEngine re2;
 	public ReminderEngine re3;
@@ -236,7 +237,7 @@ public class KitchenSinkController {
 			time.Insert();
 		}
 		log.info("Got text message from {}: {}", replyToken, text);
-		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && mark5 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
 				case "profile": {
 					String userId = event.getSource().getUserId();
@@ -307,11 +308,19 @@ public class KitchenSinkController {
 					mark4++;
 					break;
 				}
+				case "5": {
+					this.replyText(replyToken, "Please enter the food you like and dislike.");
+					mark5++;
+					break;
+				}
 				case "friend": {
 					int code = codelist.getnumber();
 					SQLInsertion insertcode = new SQLInsertCode(code, USERID, this);
 					insertcode.Insert();
 					replyText(replyToken, "This is your invitation code" + code);
+					break;
+				}
+				case "menu": {
 					break;
 				}
 				default: {
@@ -491,6 +500,21 @@ public class KitchenSinkController {
 					re3 = new ReminderEngine(hour, minutes, seconds, this,USERID);
 					replyText(replyToken, "Thanks for using this feature");
 					break;
+				}
+			}
+			switch (mark5) {
+				case 1: {
+					try {
+						String[] like = text.split(",");
+						String[] dislike = text.split(",");
+						if (like.length > 3 || dislike.length > 3) {
+							throw new Exception("illegal input, please try again.");
+						}
+						SQLInsertLike sil = new SQLInsertLike(USERID, like, dislike, this);
+						replyText(replyToken, "Thanks for using this feature.");
+					} catch (Exception e) {
+						reminder(e.getMessage());
+					}
 				}
 			}
 		}
