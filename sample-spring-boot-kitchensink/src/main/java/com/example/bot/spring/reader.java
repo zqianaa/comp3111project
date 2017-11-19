@@ -1,12 +1,9 @@
 package com.example.bot.spring;
 
-import sun.jvm.hotspot.code.CodeBlob;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import sun.jvm.hotspot.code.CodeBlob;
 /**
  * Created by qwmqza on 2017/11/12.
  */
@@ -18,7 +15,7 @@ public class reader implements SQLSearching{
         this.kc = kc;
     }
     public String Search() {
-        string string = null;
+        String string = null;
         try {
 
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);

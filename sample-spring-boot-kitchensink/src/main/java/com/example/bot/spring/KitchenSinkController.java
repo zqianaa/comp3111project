@@ -88,6 +88,7 @@ public class KitchenSinkController {
 	private int mark2 = 0;
 	private int mark3 = 0;
 	private int mark4 = 0;
+	private int mark5 = 0;
 	public ReminderEngine re1;
 	public ReminderEngine re2;
 	public ReminderEngine re3;
@@ -225,7 +226,7 @@ public class KitchenSinkController {
 		String parttext = text.substring(0,3);
 		USERID = event.getSource().getUserId();
 		log.info("Got text message from {}: {}", replyToken, text);
-		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && !parttext.toLowerCase().equals("code")) {
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && && mark5 ==0 &&!parttext.toLowerCase().equals("code")) {
 			switch (text) {
 				case "profile": {
 					String userId = event.getSource().getUserId();
@@ -344,14 +345,17 @@ public class KitchenSinkController {
 			switch(mark5) {
 				case 1:{
 					
-					string[] data = text.split(" ");
+					String[] data = text.split(" ");
 					int fat , na , cal = 0 ;
 					for (int i = 0; i < data.length; i++) {
 						SQLSearching sq = new reader(data[i], this );
-						string [] temp = sq.Search().text.split(" ");
-						fat = fat +Integer.parseInt(temp[0]);
-						cal = cal +Integer.parseInt(temp[1]);
-						na = na +Integer.parseInt(temp[2]);
+						String  temp = sq.Search();
+						if(temp!=null) {
+						String []temp2 = text.split(" ");
+						fat = fat +Integer.parseInt(temp2[0]);
+						cal = cal +Integer.parseInt(temp2[1]);
+						na = na +Integer.parseInt(temp2[2]);
+					}
 					}
 					replyText(replyToken, "The toal consumption of " +text + "is below: fat is"+ fat + "g, calories is " + cal + "g,and sodium is "+ na +"g");
 					replyText(replyToken, "Thanks for using this feature");
