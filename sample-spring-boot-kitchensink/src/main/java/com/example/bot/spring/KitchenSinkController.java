@@ -357,6 +357,7 @@ public class KitchenSinkController {
 					replyText(replyToken, "Thanks for using this feature");
 					break;
 				}
+			}
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark2) {
 				case 1: {
