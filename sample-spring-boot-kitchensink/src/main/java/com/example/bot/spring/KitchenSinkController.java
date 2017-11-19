@@ -98,7 +98,9 @@ public class KitchenSinkController {
 	private ArrayList<String> option2 = new ArrayList<>();
 	private ArrayList<String> price2 = new ArrayList<>();
 	private getCode codelist = new getCode();
+	private CurrTime function = new CurrTime();
 	private static int icecreamnumber = 0;
+	private CurrTime currTime = new CurrTime();
 
 	
 
@@ -222,11 +224,20 @@ public class KitchenSinkController {
 
 	private void handleTextContent(String replyToken, Event event, TextMessageContent content)
             throws Exception {
-		String text = content.getText();
-		String parttext = text.substring(0,3);
 		USERID = event.getSource().getUserId();
+		String text = content.getText();
+		String parttext = "";
+		if (text.length() > 4) {
+			parttext = text.substring(0, 4);
+		}
+		CurrTime ctime = new CurrTime();
+		SQLSearchUserID searchUserID = new SQLSearchUserID(USERID, "timetable", this);
+		if (!searchUserID.search()) {
+			SQLInsertTime time = new SQLInsertTime(USERID, ctime.getyear(), ctime.getmonth(), ctime.getday(), ctime.gethour(), ctime.getminurtes(),ctime.getsecond(), this);
+			time.Insert();
+		}
 		log.info("Got text message from {}: {}", replyToken, text);
-		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && && mark5 ==0 &&!parttext.toLowerCase().equals("code")) {
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && mark5 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
 				case "profile": {
 					String userId = event.getSource().getUserId();
@@ -257,14 +268,14 @@ public class KitchenSinkController {
 											new URIAction("Go to line.me",
 													"https://line.me"),
 											new PostbackAction("Say hello1",
-													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�")
+													"hello ã�“ã‚“ã�«ã�¡ã�¯")
 									)),
 									new CarouselColumn(imageUrl, "hoge", "fuga", Arrays.asList(
-											new PostbackAction("癡穡� hello2",
-													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�",
-													"hello 瓊嚙賤�����嚙蝓姻�嚙蝓￣�嚙蝓�"),
+											new PostbackAction("è¨€ hello2",
+													"hello ã�“ã‚“ã�«ã�¡ã�¯",
+													"hello ã�“ã‚“ã�«ã�¡ã�¯"),
 											new MessageAction("Say message",
-													"Rice=癟簣糧")
+													"Rice=ç±³")
 									))
 							));
 					TemplateMessage templateMessage = new TemplateMessage("Carousel alt text", carouselTemplate);
@@ -297,10 +308,20 @@ public class KitchenSinkController {
 					mark4++;
 					break;
 				}
+				case "5": {
+					this.replyText(replyToken, "Please enter the food you like and dislike.");
+					mark5++;
+					break;
+				}
 				case "friend": {
 					int code = codelist.getnumber();
 					SQLInsertion insertcode = new SQLInsertCode(code, USERID, this);
+					insertcode.Insert();
 					replyText(replyToken, "This is your invitation code" + code);
+					break;
+				}
+				case "menu": {
+					break;
 				}
 				default: {
 					if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")) {
@@ -313,19 +334,47 @@ public class KitchenSinkController {
 				}
 			}
 		} else if (parttext.toLowerCase().equals("code")) {
+			SQLSearchUserID su = new SQLSearchUserID(USERID, "USERIDTable", this);
+			JudgeTime gt = new JudgeTime(currTime, USERID, this);
 			String code = text.substring(4);
 			String userid = null;
-			try {
-				if (code.length() != 6) {
-					throw new Exception("Illegal code!");
+			if (su.search()) {
+				replyText(replyToken,"Sorry, you have already got an coppen");
+			} else if (gt.judge()) {
+				replyText(replyToken, "Sorry, you cannot attend this activity.");
+			} else {
+				try {
+					if (code.length() != 6) {
+						throw new Exception("Illegal code!");
+					}
+					SQLInsertUSERID siu = new SQLInsertUSERID(USERID, this);
+					siu.Insert();
+					SQLSearching sq = new SQLSearchCode(code, this);
+					userid = sq.Search();
+					if (userid == null) {
+						throw new Exception("Code Not Found!");
+					}
+					if (userid.equals(USERID)) {
+						throw new Exception("You cannot invite yourself!");
+					}
+					if (icecreamnumber <= 5000) {
+						icecreamnumber++;
+						reminder("Got a coppen");
+					} else {
+						reminder("Sorry, all the coppen has already sent out.");
+					}
+					if (icecreamnumber <= 5000) {
+						PushMessage pushmessage = new PushMessage(userid, new TextMessage("Got a coppen, invitor"));
+						lineMessagingClient.pushMessage(pushmessage);
+						icecreamnumber++;
+					} else {
+						PushMessage pushmessage = new PushMessage(userid, new TextMessage("invitation failed,all the coppens has been sent out"));
+						lineMessagingClient.pushMessage(pushmessage);
+					}
+					reminder(userid);
+				} catch (Exception e) {
+					reminder(e.getMessage());
 				}
-				SQLSearching sq = new SQLSearchCode(code, this);
-				USERID = sq.Search();
-				if (USERID == null) {
-					throw new Exception("Code Not Found!");
-				}
-			} catch (Exception e) {
-				reminder(e.getMessage());
 			}
 		} else {
 			// modified the 'switch' command according to the feature you are implementing.
@@ -339,26 +388,6 @@ public class KitchenSinkController {
 					reminder(data[3]);
 					SQLInsertion re5 =new SQLInsertUserStatistic(USERID,weight,height,age,data[3], this);
 					replyText(replyToken, "Thanks for using feature 1");
-					break;
-				}
-			}
-			switch(mark5) {
-				case 1:{
-					
-					String[] data = text.split(" ");
-					int fat , na , cal = 0 ;
-					for (int i = 0; i < data.length; i++) {
-						SQLSearching sq = new reader(data[i], this );
-						String  temp = sq.Search();
-						if(temp!=null) {
-						String []temp2 = text.split(" ");
-						fat = fat +Integer.parseInt(temp2[0]);
-						cal = cal +Integer.parseInt(temp2[1]);
-						na = na +Integer.parseInt(temp2[2]);
-					}
-					}
-					replyText(replyToken, "The toal consumption of " +text + "is below: fat is"+ fat + "g, calories is " + cal + "g,and sodium is "+ na +"g");
-					replyText(replyToken, "Thanks for using this feature");
 					break;
 				}
 			}
@@ -471,6 +500,21 @@ public class KitchenSinkController {
 					re3 = new ReminderEngine(hour, minutes, seconds, this,USERID);
 					replyText(replyToken, "Thanks for using this feature");
 					break;
+				}
+			}
+			switch (mark5) {
+				case 1: {
+					try {
+						String[] like = text.split(",");
+						String[] dislike = text.split(",");
+						if (like.length > 3 || dislike.length > 3) {
+							throw new Exception("illegal input, please try again.");
+						}
+						SQLInsertLike sil = new SQLInsertLike(USERID, like, dislike, this);
+						replyText(replyToken, "Thanks for using this feature.");
+					} catch (Exception e) {
+						reminder(e.getMessage());
+					}
 				}
 			}
 		}
