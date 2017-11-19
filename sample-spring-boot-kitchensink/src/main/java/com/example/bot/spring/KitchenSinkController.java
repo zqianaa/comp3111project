@@ -356,7 +356,7 @@ public class KitchenSinkController {
 						cal = cal +Integer.parseInt(temp[1]);
 						na = na +Integer.parseInt(temp[2]);
 					};
-					replyText(replyToken, "The toal consumption of " +text + "is below: fat is"+ fat + "g, calories is " + cal + "g,and sodium is "+ na +"g";
+					replyText(replyToken, "The toal consumption of " +text + "is below: fat is"+ fat + "g, calories is " + cal + "g,and sodium is "+ na +"g");
 					replyText(replyToken, "Thanks for using this feature");
 					break;
 				}
