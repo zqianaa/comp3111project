@@ -349,10 +349,13 @@ public class KitchenSinkController {
 					for (int i = 0; i < data.length; i++) {
 						SQLSearching sq = new reader(data[i], this ) {
 						string [] temp = sq.Search().text.split(" ");
+						int fat = 0 ;
+						int cal = 0;
+						int na = 0;
 						fat = fat +Integer.parseInt(temp[0]);
 						cal = cal +Integer.parseInt(temp[1]);
 						na = na +Integer.parseInt(temp[2]);
-					}
+					};
 					replyText(replyToken, "The toal consumption of " +text + "is below: fat is"+ fat + "g, calories is " + cal + "g,and sodium is "+ na +"g";
 					replyText(replyToken, "Thanks for using this feature");
 					break;
