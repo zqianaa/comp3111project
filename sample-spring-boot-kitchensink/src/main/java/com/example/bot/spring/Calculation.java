@@ -44,13 +44,7 @@ public class Calculation  {
                         Connection conn = engine.getConnection();
                         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
                         ResultSet rs = stmt.executeQuery();
-                        int c = 0;
                         while (rs.next()) {
-                            if (c == 6688) {
-                                String haha = rs.getString(2).split(",")[0].toLowerCase();
-                                kc.reminder(haha);
-                            }
-                            c++;
                             if (rs.getString(2).split(",")[0].toLowerCase().equals(temp1[j])) {
                                 cal1 = cal1 + Double.parseDouble(rs.getString(5));
                                 na1 = na1 + Double.parseDouble(rs.getString(6));

@@ -82,6 +82,9 @@ public class KitchenSinkController {
 	private final String COMMAND2 = "(2)Enter menu in text format(Please type '2' for further operation)";
 	private final String COMMAND3 = "(3)Enter menu in JSON format(Please type '3' for further operation)";
 	private final String COMMAND4 = "(4)Set remind time(Please type '4' for further operation)";
+	private final String COMMAND5 = "(5)type 'menu' to get the recommendation.";
+	private final String COMMAND6 = "(6)type 'Report' to generate today's report(don't do that if you haven't finish the input of today's menu";
+	private final String COMMAND7 = "(7)type 'check' to check the nutrition details of today's menu.";
 	private String preinput = "";
 	private String USERID = "";
 	private int mark1 = 0;
@@ -297,7 +300,7 @@ public class KitchenSinkController {
 				// modified the reply message according to the feature you are implementing.
 				case "2":
 				{
-					this.replyText(replyToken, "Please input your menu (Max: 20 Options) today in the format of Option 1, Price 1, ...");
+					this.replyText(replyToken, "Please input your menu (Max: 3 Options) today in the format of Option 1, Price 1, ...");
 					mark2++;
 					break;
 				}
@@ -318,7 +321,7 @@ public class KitchenSinkController {
 					mark5++;
 					break;
 				}
-				case "6": {
+				case "check": {
 					this.replyText(replyToken,"Please enter which meal.");
 					mark6++;
 					break;
@@ -330,7 +333,7 @@ public class KitchenSinkController {
 					replyText(replyToken, "This is your invitation code" + code);
 					break;
 				}
-				case "Yes":{
+				case "Report":{
 					try {
 						String temp = currTime.getday() + "/" + currTime.getmonth();
 						SQLSearching uw = new SQLSearchUserStatistic(USERID, this);
@@ -401,7 +404,7 @@ public class KitchenSinkController {
 					if (!preinput.equals("1") && !preinput.equals("2") && !preinput.equals("3") && !preinput.equals("4")) {
 						this.replyText(
 								replyToken,
-								GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4
+								GREETINGMESSAGE + "\n" + COMMANDMESSAGE + "\n" + COMMAND1 + "\n" + COMMAND2 + "\n" + COMMAND3 + "\n" + COMMAND4 + "\n" + COMMAND5 + "\n" + COMMAND6 + "\n" + COMMAND7
 						);
 						preinput = text;
 					}
@@ -457,6 +460,9 @@ public class KitchenSinkController {
 				case 1:{
 					try {
 						String[] data = text.split(":");
+						if (data.length != 4) {
+							throw new Exception();
+						}
 						int weight = Integer.parseInt(data[0]);
 						double height = Integer.parseInt(data[1]);
 						int age = Integer.parseInt(data[2]);
@@ -477,20 +483,27 @@ public class KitchenSinkController {
 						re2.setmarker(false);
 						re3.setmarker(false);
 					}
-					String[] input = text.split(",");
-					reminder(input[0] + input[1]);
-					option = new String[input.length/2];
-					price = new String[input.length/2];
-					for (int i = 0; i < input.length; i++) // store menu into array option & price
-					{
-						int j = i % 2;
-						if (j == 0) {
-							option[i / 2] = input[i];
-						} else {
-							price[(i - j) / 2] = input[i];
+					try {
+						String[] input = text.split(",");
+						if (input.length % 2 != 0 || input.length > 6) {
+							throw new Exception();
 						}
+						reminder(input[0] + input[1]);
+						option = new String[input.length / 2];
+						price = new String[input.length / 2];
+						for (int i = 0; i < input.length; i++) // store menu into array option & price
+						{
+							int j = i % 2;
+							if (j == 0) {
+								option[i / 2] = input[i];
+							} else {
+								price[(i - j) / 2] = input[i];
+							}
+						}
+						replyText(replyToken, "please type in which meal is it.(i.e. breakfast)");
+					} catch (Exception e) {
+						reminder("Illegal input,please try again.");
 					}
-					replyText(replyToken, "please type in which meal is it.(i.e. breakfast)");
 					mark2++;
 					break;
 				}
@@ -520,16 +533,20 @@ public class KitchenSinkController {
 						re2.setmarker(false);
 						re3.setmarker(false);
 					}
-					JSONArray jsonArray = JSONArray.fromObject(text);
-					reminder("text");
-					if (jsonArray.size() > 0) {
-						for (int i = 0; i < jsonArray.size(); i++) {
-							JSONObject jsonObject = jsonArray.getJSONObject(i);
-							option2.add(jsonObject.get("option").toString());
-							price2.add(jsonObject.get("price").toString());
+					try {
+						JSONArray jsonArray = JSONArray.fromObject(text);
+						reminder("text");
+						if (jsonArray.size() > 0) {
+							for (int i = 0; i < jsonArray.size(); i++) {
+								JSONObject jsonObject = jsonArray.getJSONObject(i);
+								option2.add(jsonObject.get("option").toString());
+								price2.add(jsonObject.get("price").toString());
+							}
 						}
+						replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+					} catch (Exception e) {
+						reminder(e.getMessage());
 					}
-					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
 					break;
 				}
 				case 2: {
@@ -566,35 +583,47 @@ public class KitchenSinkController {
 			switch(mark4) {
 				case 1: {
 					mark4++;
-					String [] time = text.split(":");
-					reminder(time[0]+time[1]+time[2]);
-					int hour = Integer.parseInt(time[0]);
-					int minutes = Integer.parseInt(time[1]);
-					int seconds = Integer.parseInt(time[2]);
-					re1 = new ReminderEngine(hour, minutes, seconds,this,USERID);
-					replyText(replyToken, "Then for lunch");
+					try {
+						String[] time = text.split(":");
+						reminder(time[0] + time[1] + time[2]);
+						int hour = Integer.parseInt(time[0]);
+						int minutes = Integer.parseInt(time[1]);
+						int seconds = Integer.parseInt(time[2]);
+						re1 = new ReminderEngine(hour, minutes, seconds, this, USERID);
+						replyText(replyToken, "Then for lunch");
+					} catch (Exception e) {
+						reminder("Illegal input!please try again");
+					}
 					break;
 				}
 				case 2: {
-					mark4++;
-					String [] time = text.split(":");
-					reminder(time[0]+time[1]+time[2]);
-					int hour = Integer.parseInt(time[0]);
-					int minutes = Integer.parseInt(time[1]);
-					int seconds = Integer.parseInt(time[2]);
-					replyText(replyToken, "Then for dinner");
-					re2 = new ReminderEngine(hour, minutes, seconds,this, USERID);
+					try {
+						mark4++;
+						String[] time = text.split(":");
+						reminder(time[0] + time[1] + time[2]);
+						int hour = Integer.parseInt(time[0]);
+						int minutes = Integer.parseInt(time[1]);
+						int seconds = Integer.parseInt(time[2]);
+						replyText(replyToken, "Then for dinner");
+						re2 = new ReminderEngine(hour, minutes, seconds, this, USERID);
+					} catch (Exception e) {
+						reminder("Illegal input!please try again!");
+					}
 					break;
 				}
 				case 3: {
-					mark4 = 0;
-					String [] time = text.split(":");
-					reminder(time[0]+time[1]+time[2]);
-					int hour = Integer.parseInt(time[0]);
-					int minutes = Integer.parseInt(time[1]);
-					int seconds = Integer.parseInt(time[2]);
-					re3 = new ReminderEngine(hour, minutes, seconds, this,USERID);
-					replyText(replyToken, "Thanks for using this feature");
+					try {
+						mark4 = 0;
+						String[] time = text.split(":");
+						reminder(time[0] + time[1] + time[2]);
+						int hour = Integer.parseInt(time[0]);
+						int minutes = Integer.parseInt(time[1]);
+						int seconds = Integer.parseInt(time[2]);
+						re3 = new ReminderEngine(hour, minutes, seconds, this, USERID);
+						replyText(replyToken, "Thanks for using this feature");
+					} catch (Exception e) {
+						reminder("Illegal input!please try again!");
+					}
 					break;
 				}
 			}

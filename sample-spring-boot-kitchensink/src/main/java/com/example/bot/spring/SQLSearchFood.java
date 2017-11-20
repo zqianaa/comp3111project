@@ -18,7 +18,6 @@ public class SQLSearchFood implements SQLSearching{
         this.kc=kc;
         this.date=date;
         this.meal = meal;
-        kc.reminder(USERID);
     }
     public String Search() {
         String string = null;
