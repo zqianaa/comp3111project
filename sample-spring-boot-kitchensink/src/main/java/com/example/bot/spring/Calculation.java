@@ -81,21 +81,21 @@ public class Calculation  {
     }
 
     public String getfood1() {
-        if (foodstring[0] != null) {
+        if (!foodstring[0].equals("null")) {
             return foodstring[0];
         } else {
             return "";
         }
     }
     public String getfood2() {
-        if (foodstring[1] != null) {
+        if (!foodstring[1].equals("null")) {
             return foodstring[1];
         } else {
             return "";
         }
     }
     public String getfood3() {
-        if (foodstring[2] != null) {
+        if (!foodstring[2].equals("null")) {
             return foodstring[2];
         } else {
             return "";
