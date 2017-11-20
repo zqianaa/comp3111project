@@ -86,7 +86,6 @@ public class SQLSearchGrain {
             while (rs.next()) {
                 String test = rs.getString(2);
                 c++;
-                kc.reminder(test);
                 if (test.substring(0,5).equals("Bread")) {
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
@@ -95,7 +94,6 @@ public class SQLSearchGrain {
                     Fatty[mark] = rs.getString(6);
                     Good[mark] = rs.getString(7);
                     Bad[mark] = rs.getString(8);
-                    kc.reminder(Good[mark]);
                     mark++;
                 }
             }
