@@ -321,6 +321,25 @@ public class KitchenSinkController {
 					break;
 				}
 				case "menu": {
+					replyText(replyToken,"Please enter which meal(i.e. breakfast,lunch or dinner)");
+					break;
+				}
+				case "breakfast": {
+					MenuEnginee me = new MenuEnginee(USERID,this);
+					String replyb = me.Generatebreakfast();
+					replyText(replyToken,replyb);
+					break;
+				}
+				case "lunch": {
+					MenuEnginee me = new MenuEnginee(USERID, this);
+					String replyl = me.Generatelunch();
+					replyText(replyToken,replyl);
+					break;
+				}
+				case "dinner": {
+					MenuEnginee me = new MenuEnginee(USERID,this);
+					String replyd = me.Generatedinner();
+					replyText(replyToken,replyd);
 					break;
 				}
 				default: {
