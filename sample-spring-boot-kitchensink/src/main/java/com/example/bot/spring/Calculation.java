@@ -81,22 +81,22 @@ public class Calculation  {
     }
 
     public String getfood1() {
+        if (foodstring[0] != null) {
+            return foodstring[0];
+        } else {
+            return "";
+        }
+    }
+    public String getfood2() {
         if (foodstring[1] != null) {
             return foodstring[1];
         } else {
             return "";
         }
     }
-    public String getfood2() {
+    public String getfood3() {
         if (foodstring[2] != null) {
             return foodstring[2];
-        } else {
-            return "";
-        }
-    }
-    public String getfood3() {
-        if (foodstring[3] != null) {
-            return foodstring[3];
         } else {
             return "";
         }
