@@ -46,7 +46,7 @@ public class SQLSearchFood implements SQLSearching{
                 throw new Exception("THE" + meal + "of date" + date + "is  NOT FOUND");
             }
         } catch (Exception e) {
-            kc.reminder(e.getMessage());
+            kc.reminder(e.getMessage()+"that");
         }
         return string ;
     }

@@ -59,7 +59,7 @@ public class Calculation  {
                 }
             }
         } catch (Exception e) {
-            kc.reminder(e.getMessage());
+            kc.reminder(e.getMessage()+"this");
         }
         String string = reply[0] + "\n" +reply[1] + "\n" + reply[2] + "\n" + "Total Energy:" + cal + "/n" + "Total Na:" + na + "\n" + "Total Fat" + fat + "\n";
         return string;
