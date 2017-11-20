@@ -30,6 +30,7 @@ public class SQLSearchFood implements SQLSearching{
             }else{
                 check="3";
             }
+            kc.reminder("test");
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM " + USERID + " where date like concat('%', ?, '%')");
