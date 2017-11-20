@@ -84,11 +84,14 @@ public class SQLSearchGrain {
             int mark = 0;
             int c = 0;
             while (rs.next()) {
+                String test = rs.getString(2);
                 if (c < 10) {
                     kc.reminder("test");
+                    kc.reminder(test);
                     c++;
                 }
-                if (rs.getString(2).substring(0,5).equals("Bread")) {
+                if (test.substring(0,5).equals("Bread")) {
+                    kc.reminder("test again");
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
