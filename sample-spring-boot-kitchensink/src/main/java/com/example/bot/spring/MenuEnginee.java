@@ -21,6 +21,7 @@ public class MenuEnginee {
         SSM2 = new SQLSearchMeat(kc);
         SSF = new SQLSearchFruit(kc);
         SSV = new SQLSearchVege(kc);
+        kc.reminder("test constructor");
     }
 
     public String Generatebreakfast() {
@@ -28,7 +29,13 @@ public class MenuEnginee {
             SSG.Search2();
             SSG.getnumber();
             Judgefood jf = new Judgefood(SSG.getvege(), USERID, kc);
-            if (jf.judge()) {
+            boolean test = jf.judge();
+            if (test) {
+                kc.reminder("true1");
+            } else {
+                kc.reminder("false1");
+            }
+            if (test) {
                 break;
             }
         }
@@ -39,9 +46,15 @@ public class MenuEnginee {
             SSM.Search1();
             SSM.getnumber();
             Judgefood jf = new Judgefood(SSM.getvege(), USERID, kc);
-            if (jf.judge()) {
-                break;
-            }
+                boolean test = jf.judge();
+                if (test) {
+                    kc.reminder("true2");
+                } else {
+                    kc.reminder("false2");
+                }
+                if (test) {
+                    break;
+                }
         }
         kc.reminder(SSM.getvege() + "test");
         String reply2 = SSM.getvege() + " Energy(kcal):" + SSM.getenergy() + " Measure:" + SSM.getmeasure() + " Na(mg):" + SSM.getna() + " Fatty Acid" + SSM.getfatty() + " Benifit" + SSM.getgood();
@@ -53,7 +66,13 @@ public class MenuEnginee {
             SSF.Search4();
             SSF.getnumber();
             Judgefood jf = new Judgefood(SSG.getvege(), USERID, kc);
-            if (jf.judge()) {
+            boolean test = jf.judge();
+            if (test) {
+                kc.reminder("true3");
+            } else {
+                kc.reminder("false3");
+            }
+            if (test) {
                 break;
             }
         }
@@ -63,7 +82,13 @@ public class MenuEnginee {
             SSM2.Search4();
             SSM2.getnumber();
             Judgefood jf = new Judgefood(SSM2.getmeat(), USERID, kc);
-            if (jf.judge()) {
+            boolean test = jf.judge();
+            if (test) {
+                kc.reminder("true4");
+            } else {
+                kc.reminder("false4");
+            }
+            if (test) {
                 break;
             }
         }
