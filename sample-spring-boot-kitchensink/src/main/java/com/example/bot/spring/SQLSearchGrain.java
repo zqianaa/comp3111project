@@ -93,12 +93,19 @@ public class SQLSearchGrain {
                 if (test.substring(0,5).equals("Bread")) {
                     kc.reminder("test again");
                     grain[mark] = rs.getString(2);
+                    kc.reminder("test again1");
                     Measure[mark] = rs.getString(3);
+                    kc.reminder("test again2");
                     Energy[mark] = rs.getString(4);
+                    kc.reminder("test again3");
                     Na[mark] = rs.getString(5);
+                    kc.reminder("test again4");
                     Fatty[mark] = rs.getString(6);
+                    kc.reminder("test again5");
                     Good[mark] = rs.getString(7);
+                    kc.reminder("test again6");
                     Bad[mark] = rs.getString(8);
+                    kc.reminder("test again7");
                     kc.reminder(grain[mark]);
                     mark++;
                 }
