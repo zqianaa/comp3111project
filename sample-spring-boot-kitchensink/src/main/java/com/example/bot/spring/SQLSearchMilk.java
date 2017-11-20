@@ -11,13 +11,13 @@ import java.util.Random;
 public class SQLSearchMilk {
 
     private KitchenSinkController kc;
-    private String [] milk;
-    private String [] Measure;
-    private String [] Energy;
-    private String [] Na;
-    private String [] Fatty;
-    private String [] Good;
-    private String [] Bad;
+    private String [] milk = new String[10000];
+    private String [] Measure = new String[10000];
+    private String [] Energy = new String[10000];
+    private String [] Na = new String[10000];
+    private String [] Fatty = new String[10000];
+    private String [] Good = new String[10000];
+    private String [] Bad = new String[10000];
     private int mark = 0;
     private int num;
 
@@ -29,8 +29,7 @@ public class SQLSearchMilk {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Milk");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Milk")) {
@@ -54,12 +53,11 @@ public class SQLSearchMilk {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Yogurt");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,6).equals("Yogurt")) {
+                if (rs.getString(2).substring(0,5).equals("Yogur")) {
                     milk[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

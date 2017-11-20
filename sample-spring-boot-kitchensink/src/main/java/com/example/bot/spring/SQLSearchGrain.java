@@ -54,11 +54,11 @@ public class SQLSearchGrain {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Chicken");
+            stmt.setString(1, "");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,7).equals("Noodles")) {
+                if (rs.getString(2).substring(0,5).equals("Noodl")) {
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

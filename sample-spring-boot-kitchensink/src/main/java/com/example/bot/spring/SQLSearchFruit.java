@@ -11,13 +11,13 @@ import java.util.Random;
 public class SQLSearchFruit {
 
     private KitchenSinkController kc;
-    private String [] meat;
-    private String [] Measure;
-    private String [] Energy;
-    private String [] Na;
-    private String [] Fatty;
-    private String [] Good;
-    private String [] Bad;
+    private String [] meat = new String[10000];
+    private String [] Measure = new String[10000];
+    private String [] Energy = new String[10000];
+    private String [] Na = new String[10000];
+    private String [] Fatty = new String[10000];
+    private String [] Good = new String[10000];
+    private String [] Bad = new String[10000];
     private int mark = 0;
     private int num;
 
@@ -29,11 +29,10 @@ public class SQLSearchFruit {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Bananas");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                if (rs.getString(2).substring(0,7).equals("Bananas")) {
+                if (rs.getString(2).substring(0,5).equals("Banan")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -54,8 +53,7 @@ public class SQLSearchFruit {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Apple");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
@@ -80,8 +78,7 @@ public class SQLSearchFruit {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Grape");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
@@ -106,12 +103,11 @@ public class SQLSearchFruit {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "strawberry");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,10).equals("strawberry")) {
+                if (rs.getString(2).substring(0,4).equals("pear")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -132,8 +128,7 @@ public class SQLSearchFruit {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
-            stmt.setString(1, "Peach");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {

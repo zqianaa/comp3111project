@@ -11,13 +11,13 @@ import java.util.Random;
 public class SQLSearchMeat {
 
     private KitchenSinkController kc;
-    private String [] meat;
-    private String [] Measure;
-    private String [] Energy;
-    private String [] Na;
-    private String [] Fatty;
-    private String [] Good;
-    private String [] Bad;
+    private String [] meat = new String[10000];
+    private String [] Measure = new String[10000];
+    private String [] Energy = new String[10000];
+    private String [] Na = new String[10000];
+    private String [] Fatty = new String[10000];
+    private String [] Good = new String[10000];
+    private String [] Bad = new String[10000];
     private int mark = 0;
     private int num;
 
