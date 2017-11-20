@@ -39,11 +39,11 @@ public class SQLInsertMenu implements SQLInsertion {
                 time = time + "3";
             }
             st.executeUpdate("INSERT INTO" + USERID + "VALUES ( '"+ time  + "','" + food[0]+"','"+price[0]+"','"+food[1]+"','"
-                        +price[1] +"','"+food[2]+"','"+price[2]+";");
+                        +price[1] +"','"+food[2]+"','"+price[2]+"');");
         }
         catch (Exception e) {
             kc.reminder(e.getMessage());
-            kc.reminder("Got an exception! ");
+            kc.reminder("Got an exception! this");
         }
     }
 }
