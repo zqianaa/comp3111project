@@ -82,7 +82,12 @@ public class SQLSearchGrain {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
+            int c = 0;
             while (rs.next()) {
+                if (c < 10) {
+                    kc.reminder("test");
+                    c++;
+                }
                 if (rs.getString(2).substring(0,5).equals("Bread")) {
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
