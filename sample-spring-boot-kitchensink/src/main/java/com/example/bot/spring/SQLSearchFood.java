@@ -30,16 +30,13 @@ public class SQLSearchFood implements SQLSearching{
             }else{
                 check="3";
             }
-            kc.reminder("test");
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM " + USERID + " where date like concat('%', ?, '%')");
             stmt.setString(1, date+check);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                kc.reminder("test1");
                 if (rs.getString(1).substring(0,5).equals(date) && rs.getString(1).substring(5).equals(check)) {
-                    kc.reminder("test2");
                     string = rs.getString(2);
                     string = string + "," + rs.getString(4);
                     string = string + "," + rs.getString(6);

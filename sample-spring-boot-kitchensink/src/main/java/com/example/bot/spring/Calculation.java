@@ -24,6 +24,7 @@ public class Calculation  {
         food = ssf.Search();
         this.kc = kc;
         foodstring = food.split(",");
+        kc.reminder(foodstring[0]);
     }
 
     public String Calucate() {
