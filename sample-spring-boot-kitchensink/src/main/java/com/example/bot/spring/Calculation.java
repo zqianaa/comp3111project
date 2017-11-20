@@ -10,9 +10,9 @@ import java.sql.ResultSet;
  */
 public class Calculation  {
     private String food;
-    private int cal;
-    private int na;
-    private int fat;
+    private double cal;
+    private double na;
+    private double fat;
     private String [] temp1;
     private KitchenSinkController kc;
 
@@ -29,9 +29,9 @@ public class Calculation  {
         String [] reply = new String[3];
         try {
             for(int i = 0 ; i < foodstring.length; i++) {
-                int cal1 = 0;
-                int na1 = 0;
-                int fat1 = 0;
+                double cal1 = 0;
+                double na1 = 0;
+                double fat1 = 0;
                 kc.reminder(foodstring[i]);
                 if (foodstring[i] != null) {
                     temp1 = foodstring[i].split(" ");
@@ -49,13 +49,9 @@ public class Calculation  {
                             }
                             c++;
                             if (rs.getString(2).split(",")[0].toLowerCase().equals(temp1[j])) {
-                                cal1 = cal1 + Integer.parseInt(rs.getString(5));
-                                kc.reminder(rs.getString(5));
-                                na1 = na1 + Integer.parseInt(rs.getString(6));
-                                kc.reminder(rs.getString(6));
-                                kc.reminder(rs.getString(7));
-                                fat1 = fat1 + Integer.parseInt(rs.getString(7));
-                                kc.reminder(rs.getString(7));
+                                cal1 = cal1 + Double.parseDouble(rs.getString(5));
+                                na1 = na1 + Double.parseDouble(rs.getString(6));
+                                fat1 = fat1 + Double.parseDouble(rs.getString(7));
                                 cal += cal1;
                                 na += na1;
                                 fat += fat1;
