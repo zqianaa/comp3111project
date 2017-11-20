@@ -53,6 +53,7 @@ public class Calculation  {
                                 kc.reminder(rs.getString(5));
                                 na1 = na1 + Integer.parseInt(rs.getString(6));
                                 kc.reminder(rs.getString(6));
+                                kc.reminder(rs.getString(7));
                                 fat1 = fat1 + Integer.parseInt(rs.getString(7));
                                 kc.reminder(rs.getString(7));
                                 cal += cal1;
