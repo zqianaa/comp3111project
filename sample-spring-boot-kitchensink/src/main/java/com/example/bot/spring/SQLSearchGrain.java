@@ -85,10 +85,10 @@ public class SQLSearchGrain {
             int c = 0;
             while (rs.next()) {
                 String test = rs.getString(2);
-                if (c < 10) {
+                c++;
+                if (c == 1927) {
                     kc.reminder("test");
                     kc.reminder(test);
-                    c++;
                 }
                 if (test.substring(0,5).equals("Bread")) {
                     kc.reminder("test again");
