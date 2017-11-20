@@ -450,11 +450,13 @@ public class KitchenSinkController {
 				case 1:{
 					String[] data =text.split(":");
 					int weight = Integer.parseInt(data[0]);
+					reminder(data[0]);
 					int height = Integer.parseInt(data[1]);
+					reminder(data[1]);
 					int age = Integer.parseInt(data[2]);
+					reminder(data[2]);
 					reminder(data[3]);
 					SQLInsertion re5 = new SQLInsertUserStatistic(USERID,weight,height,age,data[3], this);
-					reminder("test");
 					re5.Insert();
 					replyText(replyToken, "Thanks for using feature 1");
 					break;
