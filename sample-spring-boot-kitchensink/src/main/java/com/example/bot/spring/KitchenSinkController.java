@@ -347,22 +347,26 @@ public class KitchenSinkController {
 					if(energy > Integer.parseInt (cl.Search())) {
 						this.replyText(replyToken,"You exceed the daily calories intake!! Please choose a sport from running, swimming or playing basketball to burn fat.");
 					}
+					break;
 
 				}
 				case "running":{
 					double diff = energy - fuck;
 					double mile = diff/100;
 					this.replyText(replyToken, "You need to run " + mile + " miles generally to burn extra fat.");
+					break;
 				}
 				case "swimming":{
 					double diff = energy - fuck;
 					double time = diff/500;
 					this.replyText(replyToken, "You need to swim " + time + " hrs slowly to burn extra fat.");
+					break;
 				}
 				case "playing basketball": {
 					double diff = energy - fuck;
 					double time = diff / 600;
 					this.replyText(replyToken, "You need to play basketball " + time + " hrs slowly to burn extra fat.");
+					break;
 				}
 				case "menu": {
 					replyText(replyToken,"Please enter which meal(i.e. breakfast,lunch or dinner)");
