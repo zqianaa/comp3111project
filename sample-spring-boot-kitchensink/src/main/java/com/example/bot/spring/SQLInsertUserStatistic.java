@@ -11,12 +11,12 @@ import java.net.URI;
 public class SQLInsertUserStatistic implements SQLInsertion {
     String uSERID;
     int w;
-    int h;
+    double h;
     int a;
     String data;
     KitchenSinkController kc;
 
-    public SQLInsertUserStatistic(String uSERID , int w, int h, int a, String data, KitchenSinkController kc ) {
+    public SQLInsertUserStatistic(String uSERID , int w, double h, int a, String data, KitchenSinkController kc ) {
         this.a = a;
         this.data = data;
         this.kc = kc;
@@ -33,13 +33,13 @@ public class SQLInsertUserStatistic implements SQLInsertion {
             Statement st = conn.createStatement();
             if(data.equals("M")) {
 
-                int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
+                double b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
                 st.executeUpdate("INSERT INTO customertable " +
                         "VALUES ('"+ uSERID + "'," + w +","+ h +","+ a + ", 'M'," + b +");");
 
             }
             else if (data.equals("F")) {
-                int b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
+                double b =(int) (66.47+ (13.75* w) + (5.0*h) - (6.75* a));
                 st.executeUpdate("INSERT INTO customertable " +
                         "VALUES ('"+ uSERID + "'," + w +","+ h +","+ a + ", 'F'," + b +");");
 

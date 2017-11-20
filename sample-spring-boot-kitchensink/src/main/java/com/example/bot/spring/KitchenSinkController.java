@@ -448,17 +448,17 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
 				case 1:{
-					String[] data =text.split(":");
-					int weight = Integer.parseInt(data[0]);
-					reminder(data[0]);
-					int height = Integer.parseInt(data[1]);
-					reminder(data[1]);
-					int age = Integer.parseInt(data[2]);
-					reminder(data[2]);
-					reminder(data[3]);
-					SQLInsertion re5 = new SQLInsertUserStatistic(USERID,weight,height,age,data[3], this);
-					re5.Insert();
-					replyText(replyToken, "Thanks for using feature 1");
+					try {
+						String[] data = text.split(":");
+						int weight = Integer.parseInt(data[0]);
+						double height = Integer.parseInt(data[1]);
+						int age = Integer.parseInt(data[2]);
+						SQLInsertion re5 = new SQLInsertUserStatistic(USERID, weight, height, age, data[3], this);
+						re5.Insert();
+						replyText(replyToken, "Thanks for using feature 1");
+					} catch (Exception e) {
+						reminder("Illegal input!please try again!");
+					}
 					break;
 				}
 			}
