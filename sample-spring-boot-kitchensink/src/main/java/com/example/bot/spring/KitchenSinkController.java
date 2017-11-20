@@ -581,7 +581,7 @@ public class KitchenSinkController {
 					if (!text.equals("breakfast") && !text.equals("lunch") && !text.equals("dinner")) {
 						throw new Exception("Illegal meal!try again!");
 					}
-					Calculation cal = new Calculation(USERID,text,this);
+					Calculation cal = new Calculation(text,USERID,this);
 					String reply = cal.Calucate();
 					replyText(replyToken,reply);
 					mark6 = 0;
