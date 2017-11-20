@@ -16,7 +16,7 @@ public class SQLCreateTable {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
             Statement st = conn.createStatement();
-            st.executeUpdate("CREATE table " + USERID + " (Date varchar(50) ,meal varchar(20),"
+            st.executeUpdate("CREATE table " + USERID + " (Date varchar(50) ,"
                     + "food1 varchar(50),price1 varchar(5), food2 varchar(50),price2 varchar(5), food3 varchar (50), price3 varchar(5));");
             conn.close();
         } catch (Exception e) {
