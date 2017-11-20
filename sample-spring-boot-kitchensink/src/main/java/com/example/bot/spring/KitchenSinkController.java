@@ -331,21 +331,25 @@ public class KitchenSinkController {
 					break;
 				}
 				case "Yes":{
-					String temp = currTime.getday() + "/" + currTime.getmonth();
-					SQLSearching uw = new SQLSearchUserStatistic(USERID , this);
-					Calculation calculation1 = new Calculation("breakfast",USERID,this);
-					Calculation calculation2 = new Calculation("lunch",USERID,this);
-					Calculation calculation3 = new Calculation("dinner",USERID,this);
-					SQLSearching cl = new SQLSearchUserlimit(USERID,this);
-					fuck = Integer.parseInt(cl.Search());
-					energy = calculation1.getcal() + calculation2.getcal() + calculation3.getcal();
-					String reply11 = "breakfast:" + "\n" + calculation1.getfood1() + "\n" + calculation1.getfood2() + "\n" + calculation1.getfood3();
-					String reply12 = "lunch:" + "\n" + calculation2.getfood1() + "\n" + calculation2.getfood2() + "\n" + calculation2.getfood3();
-					String reply13 = "dinner:" + "\n" + calculation3.getfood1() + "\n" + calculation3.getfood2() + "\n" + calculation3.getfood3();
-					String reply4 = "TODAY'S REPORT:" + reply11 + "\n" + reply12 + "\n" + reply13 + "\n" + "Weight:" + uw.Search() + "\n" + "Energy:" + energy;
-					this.replyText(replyToken, reply4);
-					if(energy > Integer.parseInt (cl.Search())) {
-						this.replyText(replyToken,"You exceed the daily calories intake!! Please choose a sport from running, swimming or playing basketball to burn fat.");
+					try {
+						String temp = currTime.getday() + "/" + currTime.getmonth();
+						SQLSearching uw = new SQLSearchUserStatistic(USERID, this);
+						Calculation calculation1 = new Calculation("breakfast", USERID, this);
+						Calculation calculation2 = new Calculation("lunch", USERID, this);
+						Calculation calculation3 = new Calculation("dinner", USERID, this);
+						SQLSearching cl = new SQLSearchUserlimit(USERID, this);
+						fuck = Integer.parseInt(cl.Search());
+						energy = calculation1.getcal() + calculation2.getcal() + calculation3.getcal();
+						String reply11 = "breakfast:" + "\n" + calculation1.getfood1() + "\n" + calculation1.getfood2() + "\n" + calculation1.getfood3();
+						String reply12 = "lunch:" + "\n" + calculation2.getfood1() + "\n" + calculation2.getfood2() + "\n" + calculation2.getfood3();
+						String reply13 = "dinner:" + "\n" + calculation3.getfood1() + "\n" + calculation3.getfood2() + "\n" + calculation3.getfood3();
+						String reply4 = "TODAY'S REPORT:" + reply11 + "\n" + reply12 + "\n" + reply13 + "\n" + "Weight:" + uw.Search() + "\n" + "Energy:" + energy;
+						this.replyText(replyToken, reply4);
+						if (energy > Integer.parseInt(cl.Search())) {
+							this.replyText(replyToken, "You exceed the daily calories intake!! Please choose a sport from running, swimming or playing basketball to burn fat.");
+						}
+					} catch (Exception e) {
+						reminder(e.getMessage());
 					}
 					break;
 
