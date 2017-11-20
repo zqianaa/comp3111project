@@ -98,13 +98,13 @@ public class SQLSearchGrain {
                     Fatty[mark] = rs.getString(6);
                     Good[mark] = rs.getString(7);
                     Bad[mark] = rs.getString(8);
-                    kc.reminder(Bad[mark]);
+                    kc.reminder(Good[mark]);
                     mark++;
                 }
             }
             kc.reminder(String.valueOf(c));
         } catch (Exception e) {
-            kc.reminder(e.getMessage());
+            kc.reminder(e.getMessage() + "this");
         }
         return null;
     }
