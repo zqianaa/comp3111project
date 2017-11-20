@@ -103,6 +103,7 @@ public class SQLSearchGrain {
                     mark++;
                 }
             }
+            kc.reminder(String.valueOf(c));
         } catch (Exception e) {
             kc.reminder(e.getMessage());
         }
