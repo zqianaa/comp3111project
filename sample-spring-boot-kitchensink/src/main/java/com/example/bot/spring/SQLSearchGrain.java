@@ -98,7 +98,7 @@ public class SQLSearchGrain {
                     Fatty[mark] = rs.getString(6);
                     Good[mark] = rs.getString(7);
                     Bad[mark] = rs.getString(8);
-                    kc.reminder(grain[mark]);
+                    kc.reminder(Bad[mark]);
                     mark++;
                 }
             }
