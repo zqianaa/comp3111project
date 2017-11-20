@@ -442,12 +442,12 @@ public class KitchenSinkController {
 						if (!text.equals("breakfast") && !text.equals("lunch") && !text.equals("dinner")) {
 							throw new Exception("Illegal meal!try again!");
 						}
-						SQLCreateTable sct = new SQLCreateTable(USERID,this);
-						sct.Create();
 						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option,price,this);
 						sim.Insert();
-						mark2 = 0;
-						replyText(replyToken,"Thanks for using this feature");
+						if (sim.getmark()) {
+							mark2 = 0;
+							replyText(replyToken, "Thanks for using this feature");
+						}
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}
@@ -496,8 +496,10 @@ public class KitchenSinkController {
 						}
 						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option21,price21,this);
 						sim.Insert();
-						mark2 = 0;
-						replyText(replyToken,"Thanks for using this feature");
+						if (sim.getmark()) {
+							mark2 = 0;
+							replyText(replyToken, "Thanks for using this feature");
+						}
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}

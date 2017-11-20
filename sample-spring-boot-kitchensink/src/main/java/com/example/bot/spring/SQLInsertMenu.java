@@ -13,6 +13,7 @@ public class SQLInsertMenu implements SQLInsertion {
     private String time;
     private String [] price;
     private String meals;
+    private boolean mark;
 
 
     public SQLInsertMenu (String USERID, String meal,String [] food, String [] price,KitchenSinkController kc) {
@@ -27,6 +28,7 @@ public class SQLInsertMenu implements SQLInsertion {
             this.price[i] = price[i];
         }
         this.meals = meal;
+        mark = true;
     }
 
     public void Insert() {
@@ -48,9 +50,15 @@ public class SQLInsertMenu implements SQLInsertion {
                         +price[1] +"','"+food[2]+"','"+price[2]+"');");
         }
         catch (Exception e) {
-            kc.reminder(e.getMessage());
-            kc.reminder("Got an exception! this");
+            SQLCreateTable sct = new SQLCreateTable(USERID,kc);
+            sct.Create();
+            mark = false;
+            kc.reminder("Creating database for you.Please try again.");
         }
+    }
+
+    public boolean getmark() {
+        return mark;
     }
 }
 
