@@ -18,8 +18,14 @@ public class SQLInsertMenu implements SQLInsertion {
     public SQLInsertMenu (String USERID, String meal,String [] food, String [] price,KitchenSinkController kc) {
         this.USERID = USERID;
         this.kc = kc;
-        this.food=food;
-        this.price= price;
+        this.food = new String[3];
+        this.price = new String[3];
+        for (int i = 0; i < food.length; i++) {
+            this.food[i] = food[i];
+        }
+        for (int i = 0; i < price.length; i++) {
+            this.price[i] = price[i];
+        }
         this.meals = meal;
     }
 
