@@ -240,7 +240,7 @@ public class KitchenSinkController {
 			time.Insert();
 		}
 		log.info("Got text message from {}: {}", replyToken, text);
-		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && mark5 == 0 && !parttext.toLowerCase().equals("code")) {
+		if (mark1 == 0 && mark2 == 0 && mark3 == 0 && mark4 == 0 && mark5 == 0 && mark6 == 0 && !parttext.toLowerCase().equals("code")) {
 			switch (text) {
 				case "profile": {
 					String userId = event.getSource().getUserId();
