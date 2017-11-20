@@ -103,6 +103,7 @@ public class KitchenSinkController {
 	private CurrTime currTime = new CurrTime();
 	String[] like ;
 	String[] dislike;
+	private int mark6 = 0;
 
 	
 
@@ -313,6 +314,11 @@ public class KitchenSinkController {
 				case "5": {
 					this.replyText(replyToken, "Please enter the food you like split by ','");
 					mark5++;
+					break;
+				}
+				case "6": {
+					this.replyText(replyToken,"Please enter which meal.");
+					mark6++;
 					break;
 				}
 				case "friend": {
@@ -568,6 +574,17 @@ public class KitchenSinkController {
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}
+				}
+			}
+			switch (mark6) {
+				case 1: {
+					if (!text.equals("breakfast") && !text.equals("lunch") && !text.equals("dinner")) {
+						throw new Exception("Illegal meal!try again!");
+					}
+					Calculation cal = new Calculation(USERID,text,this);
+					String reply = cal.Calucate();
+					replyText(replyToken,reply);
+					mark6 = 0;
 				}
 			}
 		}
