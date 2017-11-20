@@ -32,15 +32,17 @@ public class Calculation  {
                 int cal1 = 0;
                 int na1 = 0;
                 int fat1 = 0;
+                kc.reminder(foodstring[i]);
                 if (foodstring[i] != null) {
                     temp1 = foodstring[i].split(" ");
                     for (int j = 0; j < temp1.length; ++j) {
+                        kc.reminder(temp1[j]);
                         SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
                         Connection conn = engine.getConnection();
                         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
                         ResultSet rs = stmt.executeQuery();
                         while (rs.next()) {
-                            if (rs.getString(1).split(",")[0].equals(temp1[j])) {
+                            if (rs.getString(1).split(",")[0].toLowerCase().equals(temp1[j])) {
                                 cal1 = cal1 + Integer.parseInt(rs.getString(5));
                                 na1 = na1 + Integer.parseInt(rs.getString(6));
                                 fat1 = fat1 + Integer.parseInt(rs.getString(7));
@@ -61,7 +63,7 @@ public class Calculation  {
         } catch (Exception e) {
             kc.reminder(e.getMessage()+"this");
         }
-        String string = reply[0] + "\n" +reply[1] + "\n" + reply[2] + "\n" + "Total Energy:" + cal + "/n" + "Total Na:" + na + "\n" + "Total Fat" + fat + "\n";
+        String string = reply[0] + "\n" +reply[1] + "\n" + reply[2] + "\n" + "Total Energy:" + cal + "\n" + "Total Na:" + na + "\n" + "Total Fat" + fat + "\n";
         return string;
     }
 
