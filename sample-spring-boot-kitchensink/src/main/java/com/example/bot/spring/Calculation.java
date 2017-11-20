@@ -42,6 +42,8 @@ public class Calculation  {
                         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
                         ResultSet rs = stmt.executeQuery();
                         while (rs.next()) {
+                            String haha = rs.getString(2).split(",")[0];
+                            kc.reminder(haha);
                             if (rs.getString(2).split(",")[0].toLowerCase().equals(temp1[j])) {
                                 cal1 = cal1 + Integer.parseInt(rs.getString(5));
                                 na1 = na1 + Integer.parseInt(rs.getString(6));
