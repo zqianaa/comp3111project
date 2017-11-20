@@ -32,6 +32,7 @@ public class MenuEnginee {
                 break;
             }
         }
+        kc.reminder(SSG.getvege() + "test");
         String reply1 = SSG.getvege() + " Energy(kcal):" + SSG.getenergy() + " Measure:" + SSG.getmeasure() + " Na(mg):" + SSG.getna() + " Fatty Acid" + SSG.getfatty() + " Benifit" + SSG.getgood();
             while (true) {
             SSM.Search();
@@ -42,6 +43,7 @@ public class MenuEnginee {
                 break;
             }
         }
+        kc.reminder(SSM.getvege() + "test");
         String reply2 = SSM.getvege() + " Energy(kcal):" + SSM.getenergy() + " Measure:" + SSM.getmeasure() + " Na(mg):" + SSM.getna() + " Fatty Acid" + SSM.getfatty() + " Benifit" + SSM.getgood();
         while (true) {
             SSF.Search();
@@ -55,6 +57,7 @@ public class MenuEnginee {
                 break;
             }
         }
+        kc.reminder(SSF.getmeat() + "test");
         String reply3 = SSF.getmeat() + " Energy(kcal):" + SSF.getenergy() + " Measure:" + SSF.getmeasure() + " Na(mg):" + SSF.getna() + " Fatty Acid" + SSF.getfatty() + " Benifit" + SSF.getgood();
         while (true) {
             SSM2.Search4();
@@ -64,6 +67,7 @@ public class MenuEnginee {
                 break;
             }
         }
+        kc.reminder(SSM2.getmeat() + "test");
         String reply4 = SSM2.getmeat() + " Energy(kcal):" + SSM2.getenergy() + " Measure:" + SSM2.getmeasure() + " Na(mg):" + SSM2.getna() + " Fatty Acid" + SSM2.getfatty() + " Benifit" + SSM2.getgood();
         return "For breakfast, today's recommendation is \n" + reply1 + "\n" + reply2 + "\n"+ reply3 + "\n" + reply4;
     }
