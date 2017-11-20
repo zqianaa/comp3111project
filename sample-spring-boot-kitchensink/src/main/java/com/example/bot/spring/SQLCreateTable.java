@@ -21,7 +21,7 @@ public class SQLCreateTable {
             conn.close();
         } catch (Exception e) {
             kc.reminder(e.getMessage());
-            kc.reminder("Got an exception! thisone");
+            kc.reminder("Got an exception! thistwo");
         }
     }
 }
