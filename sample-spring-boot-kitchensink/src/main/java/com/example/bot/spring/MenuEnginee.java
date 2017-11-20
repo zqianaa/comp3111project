@@ -28,8 +28,8 @@ public class MenuEnginee {
         while (true) {
             kc.reminder("test 2");
             SSG.Search2();
-            SSG.getnumber();
             kc.reminder("test 3");
+            SSG.getnumber();
             Judgefood jf = new Judgefood(SSG.getvege(), USERID, kc);
             boolean test = jf.judge();
             if (test) {
