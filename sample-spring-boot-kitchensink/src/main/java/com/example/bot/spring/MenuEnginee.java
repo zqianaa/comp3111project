@@ -21,13 +21,15 @@ public class MenuEnginee {
         SSM2 = new SQLSearchMeat(kc);
         SSF = new SQLSearchFruit(kc);
         SSV = new SQLSearchVege(kc);
-        kc.reminder("test constructor");
     }
 
     public String Generatebreakfast() {
+        kc.reminder("test 1");
         while (true) {
+            kc.reminder("test 2");
             SSG.Search2();
             SSG.getnumber();
+            kc.reminder("test 3");
             Judgefood jf = new Judgefood(SSG.getvege(), USERID, kc);
             boolean test = jf.judge();
             if (test) {
