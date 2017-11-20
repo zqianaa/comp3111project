@@ -66,6 +66,7 @@ public class SQLSearchGrain {
                     Fatty[mark] = rs.getString(6);
                     Good[mark] = rs.getString(7);
                     Bad[mark] = rs.getString(8);
+                    kc.reminder(grain[mark]);
                     mark++;
                 }
             }
@@ -104,6 +105,7 @@ public class SQLSearchGrain {
     public void getnumber() {
         Random rd = new Random();
         num = rd.nextInt(mark);
+        kc.reminder(String.valueOf(num));
     }
 
     public String getvege() {
