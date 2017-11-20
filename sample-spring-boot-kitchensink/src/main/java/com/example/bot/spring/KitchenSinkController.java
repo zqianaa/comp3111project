@@ -104,6 +104,8 @@ public class KitchenSinkController {
 	String[] like ;
 	String[] dislike;
 	private int mark6 = 0;
+	private double energy;
+	private double fuck;
 
 	
 
@@ -327,6 +329,40 @@ public class KitchenSinkController {
 					insertcode.Insert();
 					replyText(replyToken, "This is your invitation code" + code);
 					break;
+				}
+				case "Yes":{
+					String temp = currTime.getday() + "/" + currTime.getmonth();
+					SQLSearching uw = new SQLSearchUserStatistic(USERID , this);
+					Calculation calculation1 = new Calculation("breakfast",USERID,this);
+					Calculation calculation2 = new Calculation("lunch",USERID,this);
+					Calculation calculation3 = new Calculation("dinner",USERID,this);
+					SQLSearching cl = new SQLSearchUserlimit(USERID,this);
+					fuck = Integer.parseInt(cl.Search());
+					energy = calculation1.getcal() + calculation2.getcal() + calculation3.getcal();
+					String reply11 = "breakfast:" + "\n" + calculation1.getfood1() + "\n" + calculation1.getfood2() + "\n" + calculation1.getfood3();
+					String reply12 = "lunch:" + "\n" + calculation2.getfood1() + "\n" + calculation2.getfood2() + "\n" + calculation2.getfood3();
+					String reply13 = "dinner:" + "\n" + calculation3.getfood1() + "\n" + calculation3.getfood2() + "\n" + calculation3.getfood3();
+					String reply4 = "TODAY'S REPORT:" + reply11 + "\n" + reply12 + "\n" + reply13 + "\n" + "Weight:" + uw.Search() + "\n" + "Energy:" + energy;
+					this.replyText(replyToken, reply4);
+					if(energy > Integer.parseInt (cl.Search())) {
+						this.replyText(replyToken,"You exceed the daily calories intake!! Please choose a sport from running, swimming or playing basketball to burn fat.");
+					}
+
+				}
+				case "running":{
+					double diff = energy - fuck;
+					double mile = diff/100;
+					this.replyText(replyToken, "You need to run " + mile + " miles generally to burn extra fat.");
+				}
+				case "swimming":{
+					double diff = energy - fuck;
+					double time = diff/500;
+					this.replyText(replyToken, "You need to swim " + time + " hrs slowly to burn extra fat.");
+				}
+				case "playing basketball": {
+					double diff = energy - fuck;
+					double time = diff / 600;
+					this.replyText(replyToken, "You need to play basketball " + time + " hrs slowly to burn extra fat.");
 				}
 				case "menu": {
 					replyText(replyToken,"Please enter which meal(i.e. breakfast,lunch or dinner)");

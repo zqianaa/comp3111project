@@ -15,6 +15,7 @@ public class Calculation  {
     private double fat;
     private String [] temp1;
     private KitchenSinkController kc;
+    private String[] foodstring;
 
     public Calculation(String meal ,String USERID, KitchenSinkController kc) {
         CurrTime currTime = new CurrTime();
@@ -22,10 +23,11 @@ public class Calculation  {
         SQLSearchFood ssf = new SQLSearchFood(USERID, kc, date, meal);
         food = ssf.Search();
         this.kc = kc;
+        foodstring = food.split(",");
     }
 
     public String Calucate() {
-        String [] foodstring = food.split(",");
+
         String [] reply = new String[3];
         try {
             for(int i = 0 ; i < foodstring.length; i++) {
@@ -65,12 +67,38 @@ public class Calculation  {
                 } else {
                     reply[i] = foodstring[i] + "    Energy:" + cal1 + "    Na:" + na1 + "    Fat:" + fat1;
                 }
-            }
+                }
         } catch (Exception e) {
             kc.reminder(e.getMessage()+"this");
         }
         String string = reply[0] + "\n" +reply[1] + "\n" + reply[2] + "\n" + "Total Energy:" + cal + "\n" + "Total Na:" + na + "\n" + "Total Fat" + fat + "\n";
         return string;
+    }
+
+    public double getcal() {
+        return cal;
+    }
+
+    public String getfood1() {
+        if (foodstring[1] != null) {
+            return foodstring[1];
+        } else {
+            return "";
+        }
+    }
+    public String getfood2() {
+        if (foodstring[2] != null) {
+            return foodstring[2];
+        } else {
+            return "";
+        }
+    }
+    public String getfood3() {
+        if (foodstring[3] != null) {
+            return foodstring[3];
+        } else {
+            return "";
+        }
     }
 
 }
