@@ -34,12 +34,12 @@ public class SQLSearchFruit {
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Bana")) {
                     meat[mark] = rs.getString(2);
-                    Measure[mark] = rs.getString(3);
-                    Energy[mark] = rs.getString(4);
-                    Na[mark] = rs.getString(5);
-                    Fatty[mark] = rs.getString(6);
-                    Good[mark] = rs.getString(7);
-                    Bad[mark] = rs.getString(8);
+                    Measure[mark] = rs.getString(4);
+                    Energy[mark] = rs.getString(5);
+                    Na[mark] = rs.getString(6);
+                    Fatty[mark] = rs.getString(7);
+                    Good[mark] = rs.getString(8);
+                    Bad[mark] = rs.getString(9);
                     mark++;
                 }
             }
@@ -58,12 +58,12 @@ public class SQLSearchFruit {
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Appl")) {
                     meat[mark] = rs.getString(2);
-                    Measure[mark] = rs.getString(3);
-                    Energy[mark] = rs.getString(4);
-                    Na[mark] = rs.getString(5);
-                    Fatty[mark] = rs.getString(6);
-                    Good[mark] = rs.getString(7);
-                    Bad[mark] = rs.getString(8);
+                    Measure[mark] = rs.getString(4);
+                    Energy[mark] = rs.getString(5);
+                    Na[mark] = rs.getString(6);
+                    Fatty[mark] = rs.getString(7);
+                    Good[mark] = rs.getString(8);
+                    Bad[mark] = rs.getString(9);
                     mark++;
                 }
             }
@@ -82,12 +82,12 @@ public class SQLSearchFruit {
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Grap")) {
                     meat[mark] = rs.getString(2);
-                    Measure[mark] = rs.getString(3);
-                    Energy[mark] = rs.getString(4);
-                    Na[mark] = rs.getString(5);
-                    Fatty[mark] = rs.getString(6);
-                    Good[mark] = rs.getString(7);
-                    Bad[mark] = rs.getString(8);
+                    Measure[mark] = rs.getString(4);
+                    Energy[mark] = rs.getString(5);
+                    Na[mark] = rs.getString(6);
+                    Fatty[mark] = rs.getString(7);
+                    Good[mark] = rs.getString(8);
+                    Bad[mark] = rs.getString(9);
                     mark++;
                 }
             }
@@ -106,12 +106,12 @@ public class SQLSearchFruit {
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("pear")) {
                     meat[mark] = rs.getString(2);
-                    Measure[mark] = rs.getString(3);
-                    Energy[mark] = rs.getString(4);
-                    Na[mark] = rs.getString(5);
-                    Fatty[mark] = rs.getString(6) ;
-                    Good[mark] = rs.getString(7);
-                    Bad[mark] = rs.getString(8);
+                    Measure[mark] = rs.getString(5);
+                    Energy[mark] = rs.getString(5);
+                    Na[mark] = rs.getString(6);
+                    Fatty[mark] = rs.getString(7) ;
+                    Good[mark] = rs.getString(8);
+                    Bad[mark] = rs.getString(9);
                     mark++;
                 }
             }
@@ -130,12 +130,12 @@ public class SQLSearchFruit {
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Peac")) {
                     meat[mark] = rs.getString(2);
-                    Measure[mark] = rs.getString(3);
-                    Energy[mark] = rs.getString(4);
-                    Na[mark] = rs.getString(5);
-                    Fatty[mark] = rs.getString(6);
-                    Good[mark] = rs.getString(7);
-                    Bad[mark] = rs.getString(8);
+                    Measure[mark] = rs.getString(4);
+                    Energy[mark] = rs.getString(5);
+                    Na[mark] = rs.getString(6);
+                    Fatty[mark] = rs.getString(7);
+                    Good[mark] = rs.getString(8);
+                    Bad[mark] = rs.getString(9);
                     mark++;
                 }
             }

@@ -101,6 +101,8 @@ public class KitchenSinkController {
 	private CurrTime function = new CurrTime();
 	private static int icecreamnumber = 0;
 	private CurrTime currTime = new CurrTime();
+	String[] like ;
+	String[] dislike;
 
 	
 
@@ -309,7 +311,7 @@ public class KitchenSinkController {
 					break;
 				}
 				case "5": {
-					this.replyText(replyToken, "Please enter the food you like and dislike.");
+					this.replyText(replyToken, "Please enter the food you like split by ','");
 					mark5++;
 					break;
 				}
@@ -524,13 +526,27 @@ public class KitchenSinkController {
 			switch (mark5) {
 				case 1: {
 					try {
-						String[] like = text.split(",");
-						String[] dislike = text.split(",");
-						if (like.length > 3 || dislike.length > 3) {
+						like = text.split(",");
+						if (like.length > 3) {
+							throw new Exception("illegal input, please try again.");
+						}
+						replyText(replyToken, "Please enter the food you dislike split by ','.");
+					} catch (Exception e) {
+						reminder(e.getMessage());
+					}
+					mark5++;
+					break;
+				}
+				case 2: {
+					try {
+						dislike = text.split(",");
+						if (dislike.length > 3) {
 							throw new Exception("illegal input, please try again.");
 						}
 						SQLInsertLike sil = new SQLInsertLike(USERID, like, dislike, this);
+						sil.insert();
 						replyText(replyToken, "Thanks for using this feature.");
+						mark5 = 0;
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}
