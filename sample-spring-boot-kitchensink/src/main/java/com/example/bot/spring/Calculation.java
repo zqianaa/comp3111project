@@ -50,8 +50,11 @@ public class Calculation  {
                             c++;
                             if (rs.getString(2).split(",")[0].toLowerCase().equals(temp1[j])) {
                                 cal1 = cal1 + Integer.parseInt(rs.getString(5));
+                                kc.reminder(rs.getString(5));
                                 na1 = na1 + Integer.parseInt(rs.getString(6));
+                                kc.reminder(rs.getString(6));
                                 fat1 = fat1 + Integer.parseInt(rs.getString(7));
+                                kc.reminder(rs.getString(7));
                                 cal += cal1;
                                 na += na1;
                                 fat += fat1;
