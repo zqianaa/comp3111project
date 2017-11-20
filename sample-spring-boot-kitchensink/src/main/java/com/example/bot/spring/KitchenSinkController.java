@@ -448,6 +448,7 @@ public class KitchenSinkController {
 			// modified the 'switch' command according to the feature you are implementing.
 			switch(mark1) {
 				case 1:{
+					reminder("hahahahha");
 					String[] data =text.split(":");
 					int weight = Integer.parseInt(data[0]);
 					int height = Integer.parseInt(data[1]);
