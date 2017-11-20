@@ -31,7 +31,7 @@ public class SQLSearchVege implements SQLSearching {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Salad")) {
+                if (rs.getString(2).substring(0,4).equals("Sala")) {
                     vege[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -56,7 +56,7 @@ public class SQLSearchVege implements SQLSearching {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Carro")) {
+                if (rs.getString(2).substring(0,4).equals("Carr")) {
                     vege[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -81,7 +81,7 @@ public class SQLSearchVege implements SQLSearching {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Potat")) {
+                if (rs.getString(2).substring(0,4).equals("Pota")) {
                     vege[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -106,7 +106,7 @@ public class SQLSearchVege implements SQLSearching {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Cabba")) {
+                if (rs.getString(2).substring(0,4).equals("Cabb")) {
                     vege[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -131,7 +131,7 @@ public class SQLSearchVege implements SQLSearching {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Tomat")) {
+                if (rs.getString(2).substring(0,4).equals("Toma")) {
                     vege[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

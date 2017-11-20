@@ -59,7 +59,7 @@ public class SQLSearchMeat {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,7).equals("Chicken")) {
+                if (rs.getString(2).substring(0,4).equals("Chic")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

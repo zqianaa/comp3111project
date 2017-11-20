@@ -32,7 +32,7 @@ public class SQLSearchFruit {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Banan")) {
+                if (rs.getString(2).substring(0,4).equals("Bana")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -57,7 +57,7 @@ public class SQLSearchFruit {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Apple")) {
+                if (rs.getString(2).substring(0,4).equals("Appl")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -82,7 +82,7 @@ public class SQLSearchFruit {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Grape")) {
+                if (rs.getString(2).substring(0,4).equals("Grap")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -132,7 +132,7 @@ public class SQLSearchFruit {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Peach")) {
+                if (rs.getString(2).substring(0,4).equals("Peac")) {
                     meat[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

@@ -58,7 +58,7 @@ public class SQLSearchGrain {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Noodl")) {
+                if (rs.getString(2).substring(0,4).equals("Nood")) {
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
@@ -86,7 +86,7 @@ public class SQLSearchGrain {
             while (rs.next()) {
                 String test = rs.getString(2);
                 c++;
-                if (test.substring(0,5).equals("Bread")) {
+                if (test.substring(0,4).equals("Brea")) {
                     grain[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);

@@ -57,7 +57,7 @@ public class SQLSearchMilk {
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
-                if (rs.getString(2).substring(0,5).equals("Yogur")) {
+                if (rs.getString(2).substring(0,4).equals("Yogu")) {
                     milk[mark] = rs.getString(2);
                     Measure[mark] = rs.getString(3);
                     Energy[mark] = rs.getString(4);
