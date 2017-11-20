@@ -44,7 +44,7 @@ public class SQLInsertMenu implements SQLInsertion {
             if (meals.equals("dinner")) {
                 time = time + "3";
             }
-            st.executeUpdate("INSERT INTO" + USERID + "VALUES ( '"+ time  + "','" + food[0]+"','"+price[0]+"','"+food[1]+"','"
+            st.executeUpdate("INSERT INTO " + USERID + " VALUES ( '"+ time  + "','" + food[0]+"','"+price[0]+"','"+food[1]+"','"
                         +price[1] +"','"+food[2]+"','"+price[2]+"');");
         }
         catch (Exception e) {
