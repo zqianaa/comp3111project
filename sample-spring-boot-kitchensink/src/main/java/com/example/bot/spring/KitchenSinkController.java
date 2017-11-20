@@ -446,6 +446,8 @@ public class KitchenSinkController {
 						sct.Create();
 						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option,price,this);
 						sim.Insert();
+						mark2 = 0;
+						replyText(replyToken,"Thanks for using this feature");
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}
@@ -494,6 +496,8 @@ public class KitchenSinkController {
 						}
 						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option21,price21,this);
 						sim.Insert();
+						mark2 = 0;
+						replyText(replyToken,"Thanks for using this feature");
 					} catch (Exception e) {
 						reminder(e.getMessage());
 					}
