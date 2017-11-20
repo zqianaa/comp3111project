@@ -79,7 +79,7 @@ public class SQLSearchGrain {
         try {
             SQLDatabaseEngine engine = new SQLDatabaseEngine(kc);
             Connection conn = engine.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT description FROM datatable");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
             int mark = 0;
             while (rs.next()) {
