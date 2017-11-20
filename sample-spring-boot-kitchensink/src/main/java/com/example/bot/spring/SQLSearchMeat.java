@@ -57,7 +57,6 @@ public class SQLSearchMeat {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
             stmt.setString(1, "Chicken");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Chic")) {
                     meat[mark] = rs.getString(2);
@@ -83,7 +82,6 @@ public class SQLSearchMeat {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
             stmt.setString(1, "Pork");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Pork")) {
                     meat[mark] = rs.getString(2);
@@ -109,7 +107,6 @@ public class SQLSearchMeat {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
             stmt.setString(1, "Fish");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Fish")) {
                     meat[mark] = rs.getString(2);
@@ -135,7 +132,6 @@ public class SQLSearchMeat {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
             stmt.setString(1, "Egg");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,3).equals("Egg")) {
                     meat[mark] = rs.getString(2);

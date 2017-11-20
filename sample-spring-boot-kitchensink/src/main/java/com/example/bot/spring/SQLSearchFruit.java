@@ -55,7 +55,6 @@ public class SQLSearchFruit {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Appl")) {
                     meat[mark] = rs.getString(2);
@@ -80,7 +79,6 @@ public class SQLSearchFruit {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Grap")) {
                     meat[mark] = rs.getString(2);
@@ -105,7 +103,6 @@ public class SQLSearchFruit {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("pear")) {
                     meat[mark] = rs.getString(2);
@@ -130,7 +127,6 @@ public class SQLSearchFruit {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Peac")) {
                     meat[mark] = rs.getString(2);

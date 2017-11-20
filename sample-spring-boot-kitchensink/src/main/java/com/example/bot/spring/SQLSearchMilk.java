@@ -55,7 +55,6 @@ public class SQLSearchMilk {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Yogu")) {
                     milk[mark] = rs.getString(2);

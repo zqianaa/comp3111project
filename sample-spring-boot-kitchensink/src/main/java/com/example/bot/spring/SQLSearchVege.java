@@ -54,7 +54,6 @@ public class SQLSearchVege implements SQLSearching {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Carr")) {
                     vege[mark] = rs.getString(2);
@@ -79,7 +78,6 @@ public class SQLSearchVege implements SQLSearching {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Pota")) {
                     vege[mark] = rs.getString(2);
@@ -104,7 +102,6 @@ public class SQLSearchVege implements SQLSearching {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Cabb")) {
                     vege[mark] = rs.getString(2);
@@ -129,7 +126,6 @@ public class SQLSearchVege implements SQLSearching {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Toma")) {
                     vege[mark] = rs.getString(2);

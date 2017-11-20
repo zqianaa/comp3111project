@@ -56,7 +56,6 @@ public class SQLSearchGrain {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable where description like concat('%', ?, '%')");
             stmt.setString(1, "");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             while (rs.next()) {
                 if (rs.getString(2).substring(0,4).equals("Nood")) {
                     grain[mark] = rs.getString(2);
@@ -81,7 +80,6 @@ public class SQLSearchGrain {
             Connection conn = engine.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM datatable");
             ResultSet rs = stmt.executeQuery();
-            int mark = 0;
             int c = 0;
             while (rs.next()) {
                 String test = rs.getString(2);
