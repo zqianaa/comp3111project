@@ -433,22 +433,21 @@ public class KitchenSinkController {
 							price[(i - j) / 2] = input[i];
 						}
 					}
-					replyText(replyToken, "Type 'yes' to check the menu you input, type 'no' if you don't want to");
+					replyText(replyToken, "please type in which meal is it.(i.e. breakfast)");
 					mark2++;
 					break;
 				}
 				case 2: {
-					if (text.toLowerCase().equals("yes")) {
-						reminder(String.valueOf(option.length));
-						for (int i = 0; i < option.length; i++) // testing if the storage is successful
-						{
-							reminder("option: " + option[i] + "   " + "price: " + price[i]);
+					try {
+						if (!text.equals("breakfast") && !text.equals("lunch") && !text.equals("dinner")) {
+							throw new Exception("Illegal meal!try again!");
 						}
-						mark2 = 0;
-						replyText(replyToken, "Thanks for using this feature1");
-					} else {
-						mark2 = 0;
-						replyText(replyToken, "Thanks for using this feature");
+						SQLCreateTable sct = new SQLCreateTable(USERID,this);
+						sct.Create();
+						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option,price,this);
+						sim.Insert();
+					} catch (Exception e) {
+						reminder(e.getMessage());
 					}
 					break;
 				}
@@ -475,15 +474,28 @@ public class KitchenSinkController {
 					break;
 				}
 				case 2: {
-					mark3 = 0;
-					if (text.toLowerCase().equals("yes")) {
-						for (int i = 0; i < option2.size(); i++) // testing if the storage is successful
-						{
-							reminder("option: " + option2.get(i) + "   " + "price: " + price2.get(i));
+					try {
+						if (!text.equals("breakfast") && !text.equals("lunch") && !text.equals("dinner")) {
+							throw new Exception("Illegal meal!try again!");
 						}
-						replyText(replyToken, "Thanks for using this feature");
-					} else {
-						replyText(replyToken, "Thanks for using this feature");
+						SQLCreateTable sct = new SQLCreateTable(USERID,this);
+						sct.Create();
+						String [] option21 = new String[option2.size()];
+						String [] price21 = new String[price2.size()];
+						int i = 0;
+						for(String s:option2) {
+							option21[i] = s;
+							i++;
+						}
+						int j = 0;
+						for(String s:price2) {
+							price21[j] = s;
+							j++;
+						}
+						SQLInsertMenu sim = new SQLInsertMenu(USERID,text,option21,price21,this);
+						sim.Insert();
+					} catch (Exception e) {
+						reminder(e.getMessage());
 					}
 					break;
 				}
