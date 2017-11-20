@@ -335,8 +335,11 @@ public class KitchenSinkController {
 						String temp = currTime.getday() + "/" + currTime.getmonth();
 						SQLSearching uw = new SQLSearchUserStatistic(USERID, this);
 						Calculation calculation1 = new Calculation("breakfast", USERID, this);
+						calculation1.Calucate();
 						Calculation calculation2 = new Calculation("lunch", USERID, this);
+						calculation2.Calucate();
 						Calculation calculation3 = new Calculation("dinner", USERID, this);
+						calculation3.Calucate();
 						SQLSearching cl = new SQLSearchUserlimit(USERID, this);
 						fuck = Integer.parseInt(cl.Search());
 						energy = calculation1.getcal() + calculation2.getcal() + calculation3.getcal();
